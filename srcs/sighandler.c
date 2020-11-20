@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   sighandler.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 16:56:19 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/13 16:57:53 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/17 01:46:50 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/11/17 03:02:02 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "msh.h"
 
-char		*ft_strcat(char *dest, char *src)
+void		sighandler(int sig)
 {
-	int i;
-	int j;
-
-	i = 0;
-	while (dest[i] != '\0')
-		i++;
-	j = 0;
-	while (src[j] != '\0')
+	if (sig == SIGINT)
 	{
-		dest[i + j] = src[j];
-		j++;
+		write(1, "\n", 1);
+		//show_prompt();
+		signal(SIGINT, sighandler);
+
 	}
-	dest[i + j] = '\0';
-	return (dest);
+}
+
+void		sighandler_c(int sig)
+{
+	if (sig == SIGINT)
+	{
+		write(1, "\n", 1);
+		signal(SIGINT, sighandler_c);
+	}
 }

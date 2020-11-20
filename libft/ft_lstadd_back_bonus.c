@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isupper.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 15:02:03 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/12 13:43:44 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/22 15:52:28 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/24 11:46:04 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isupper(int c)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	if (c >= 65 && c <= 90)
-		return (1);
-	else
-		return (0);
+	t_list *ptr;
+
+	if (*alst != NULL)
+	{
+		ptr = *alst;
+		while (ptr->next != NULL)
+			ptr = ptr->next;
+		ptr->next = new;
+	}
+	else if (new != NULL)
+		*alst = new;
 }

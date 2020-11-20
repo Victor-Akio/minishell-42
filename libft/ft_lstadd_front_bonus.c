@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 13:27:15 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/13 13:42:57 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/22 16:35:42 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/24 11:45:59 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcapitalize(char *str)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	int		i;
-
-	i = 0;
-	str[i] = ft_toupper(str[i]);
-	while (str[++i])
+	if (*alst != NULL)
 	{
-		str[i] = ft_tolower(str[i]);
-		if (!ft_isalnum(str[i - 1]))
-			str[i] = ft_toupper(str[i]);
+		new->next = *alst;
+		*alst = new;
 	}
-	return (str);
+	else if (new != NULL)
+		*alst = new;
 }

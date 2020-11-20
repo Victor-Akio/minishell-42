@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 03:58:03 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/15 03:58:45 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/22 16:47:44 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/24 12:12:26 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strupcase(char *str)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int		i;
+	t_list *ptr;
 
-	i = 0;
-	while (str[i])
+	if (*lst == NULL || del == NULL)
+		return ;
+	ptr = *lst;
+	while (ptr != NULL)
 	{
-		str[i] = ft_toupper(str[i]);
-		i++;
+		*lst = ptr;
+		ft_lstdelone(*lst, del);
+		ptr = ptr->next;
 	}
-	return (str);
+	*lst = NULL;
 }

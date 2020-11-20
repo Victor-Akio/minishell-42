@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/22 06:49:42 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/01/27 14:25:14 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/15 13:11:12 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/25 14:15:50 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, unsigned long int n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char		*dst1;
-	unsigned char		*src1;
-	unsigned long int	i;
+	unsigned char	*d;
+	unsigned char	*s;
+	unsigned char	p;
+	size_t			i;
 
-	dst1 = (unsigned char *)dst;
-	src1 = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	p = (unsigned char)c;
 	i = 0;
-	while (i < n)
+	while (i < n && (i == 0 || ((i > 0) && s[i - 1] != p)))
 	{
-		dst1[i] = src1[i];
-		if (dst1[i] == (unsigned char)c)
-			return ((void *)(dst1 + i + 1));
+		d[i] = s[i];
 		i++;
 	}
-	return (NULL);
+	if (i > 0 && s[i - 1] == p)
+		return (d + i);
+	else
+		return (NULL);
 }

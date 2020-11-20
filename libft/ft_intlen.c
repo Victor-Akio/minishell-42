@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strclr.c                                        :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@students.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 16:59:12 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/13 17:00:53 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/08/20 07:27:36 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/08/20 07:27:46 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_strclr(char *s)
+int		ft_intlen(int n)
 {
-	if (s)
-		while (*s)
-			*s++ = '\0';
+	int	i;
+
+	i = 1;
+	while (n > 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
 }

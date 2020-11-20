@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_addchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 12:14:52 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/13 12:31:11 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/20 04:07:44 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/11/20 04:40:17 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			ft_str_is_printable(char *str)
+char			*ft_addchar(char *str, char c)
 {
-	unsigned int	i;
+	char		*res;
+	int			len;
+	int			i;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] < 32 || str[i] > 126)
-			return (0);
-		++i;
-	}
-	return (1);
+	i = -1;
+	len = ft_strlen(str);
+	res = ft_calloc(len + 2, sizeof(char));
+	while (++i < len)
+		res[i] = str[i];
+	res[i] = c;
+	free(str);
+	return (res);
 }

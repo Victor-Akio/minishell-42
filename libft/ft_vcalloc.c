@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_vcalloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@students.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 02:47:51 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/15 02:48:07 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/08/19 21:09:40 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/08/19 21:10:04 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncat(char *dest, char *src, int nb)
+int					*ft_vcalloc(size_t count, int value)
 {
-	int	i;
-	int	j;
+	size_t		i;
+	int			*mem;
 
 	i = 0;
-	while (dest[i] != '\0')
-		i++;
-	j = 0;
-	while (src[j] != '\0' && j < nb)
+	if (!(mem = (int*)malloc(count * sizeof(int))))
+		return (NULL);
+	while (i < count)
 	{
-		dest[i] = src[j];
+		mem[i] = value;
 		i++;
-		j++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (mem);
 }

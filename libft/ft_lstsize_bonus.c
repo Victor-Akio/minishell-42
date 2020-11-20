@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/13 12:06:44 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/13 12:25:56 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/23 08:36:23 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/24 11:46:43 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			ft_str_is_lowercase(char *str)
+int	ft_lstsize(t_list *lst)
 {
-	unsigned int	i;
+	int count;
 
-	i = 0;
-	while (str[i] != '\0')
+	count = 0;
+	while (lst != NULL)
 	{
-		if (str[i] < 'a' || str[i] > 'z')
-			return (0);
-		++i;
+		lst = lst->next;
+		count++;
 	}
-	return (1);
+	return (count);
 }

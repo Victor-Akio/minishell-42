@@ -3,57 +3,48 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+         #
+#    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/21 22:17:01 by vminomiy          #+#    #+#              #
-#    Updated: 2020/02/15 04:32:54 by vminomiy         ###   ########.fr        #
+#    Created: 2019/10/16 12:18:16 by hbuisser          #+#    #+#              #
+#    Updated: 2020/11/20 04:15:24 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libft.a
+NAME = libft.a
+CFLAGS = -Wall -Wextra -Werror -I$(HEADER)
 
-SRCS=ft_bzero.c ft_memmove.c ft_strlen.c ft_strlcat.c ft_strlcpy.c \
-	 ft_memset.c ft_strncmp.c ft_strnstr.c ft_strchr.c ft_strrchr.c \
-	 ft_memcpy.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_isalpha.c \
-	 ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c \
-	 ft_tolower.c ft_strdup.c ft_calloc.c ft_atoi.c ft_substr.c ft_strjoin.c \
-	 ft_strtrim.c ft_putchar_fd.c ft_putstr_fd.c ft_itoa.c ft_putnbr_fd.c \
-	 ft_putendl_fd.c ft_strmapi.c ft_split.c ft_putchar.c ft_iscntrl.c\
-	 ft_strlowcase.c ft_isupper.c ft_strnew.c ft_isspace.c ft_isgraph.c \
-	 ft_islower.c ft_isxdigit.c ft_memalloc.c ft_memdel.c ft_putendl.c \
-	 ft_putnbr.c ft_putstr.c ft_str_is_alpha.c ft_str_is_lowercase.c \
-	 ft_str_is_numeric.c ft_str_is_printable.c ft_str_is_uppercase.c \
-	 ft_strcapitalize.c ft_strcasecmp.c ft_strcasestr.c ft_strcat.c \
-	 ft_strclr.c ft_strcmp.c ft_strcpy.c ft_strequ.c ft_iter.c \
-	 ft_striteri.c ft_strmap.c ft_strncasecmp.c ft_strncat.c  ft_strncpy.c \
-	 ft_strndup.c ft_strnequ.c ft_strstr.c ft_strupcase.c ft_itoa_base.c
+SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_free.c ft_isalnum.c ft_isalpha.c \
+ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memccpy.c ft_memchr.c \
+ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c \
+ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c \
+ft_strdup.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
+ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c \
+ft_toupper.c ft_strncpy.c ft_strcmp.c ft_putstr.c ft_putchar.c ft_putnbr.c \
+ft_arraylen.c get_next_line.c ft_memalloc.c ft_memdel.c ft_vcalloc.c \
+ft_intlen.c ft_isspace.c ft_freearray.c ft_iswall.c ft_addchar.c
 
-SRCS_BONUS=ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-		   ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-		   ft_lstmap.c
-
-OBJECTS= $(SRCS:.c=.o)
-
-OBJECTS_BONUS=$(SRCS_BONUS:.c=.o)
-
-INCLUDES=./
+SRCS_B = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+ft_lstadd_back_bonus.c ft_lstlast_bonus.c ft_lstclear_bonus.c \
+ft_lstdelone_bonus.c ft_lstiter_bonus.c
+OBJECTS = $(SRCS:%.c=%.o)
+OBJECTS_B = $(SRCS_B:%.c=%.o)
+CC = gcc
+REM = rm -rf
+HEADER = ./
 
 all: $(NAME)
-
-$(NAME): $(SRCS) libft.h
-	gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(SRCS)
-	ar rc $(NAME) $(OBJECTS)
+$(NAME): $(OBJECTS)
+	ar rcs $(NAME) $(OBJECTS)
 	ranlib $(NAME)
-
+$(OBJECTS): $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
+$(OBJECTS_B): $(SRCS_B)
+	$(CC) $(CFLAGS) -c $(SRCS_B)
+bonus: fclean $(OBJECTS) $(OBJECTS_B)
+	ar rcs libft.a $(OBJECTS) $(OBJECTS_B)
 clean:
-	rm -f $(OBJECTS) $(OBJECTS_BONUS)
-
+	$(REM) $(OBJECTS) $(OBJECTS_B)
 fclean: clean
-	rm -f $(NAME)
-
+	$(REM) $(NAME)
 re: fclean all
-
-bonus: $(OBJECTS) $(OBJECTS_BONUS)
-	ar rcs $(NAME) $(OBJECTS) $(OBJECTS_BONUS)
-
-clear: clean fclean
+.PHONY: all clean fclean re

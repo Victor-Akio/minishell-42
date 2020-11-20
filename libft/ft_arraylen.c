@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_arraylen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@students.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 02:50:28 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/15 02:50:55 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/08/13 04:27:38 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/08/13 18:07:51 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strndup(const char *s1, size_t n)
+int				ft_arraylen(char **str)
 {
-	char		*str_copy;
-	size_t		i;
+	int		i;
 
-	str_copy = malloc(sizeof(*str_copy) * (n + 1));
-	if (!str_copy)
-		return (NULL);
 	i = 0;
-	while (s1[i] != '\0' && i < n)
-	{
-		str_copy[i] = s1[i];
+	while (str && str[i])
 		i++;
-	}
-	str_copy[i] = '\0';
-	return (str_copy);
+	return (i);
 }

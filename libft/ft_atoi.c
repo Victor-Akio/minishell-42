@@ -3,39 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 17:20:33 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/12 13:35:04 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/08 18:19:49 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/28 10:02:31 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(const char *str)
+int	ft_manage_longmin(unsigned long result, int count)
 {
-	int			x;
-	int			sinal;
-	int			aux;
+	int value;
 
-	x = 0;
-	sinal = -1;
-	aux = 0;
-	while (ft_isspace(*str))
-		str++;
-	if (*str == '+' || *str == '-')
-		if (*str++ == '-')
-			sinal = 1;
-	while (ft_isdigit(*str))
+	if (count % 2 != 0)
+		value = -1;
+	else
+		value = 1;
+	if (value == -1 && result > 2147483648)
+		return (0);
+	else if (value == 1 && result > 2147483647)
+		result = (-1);
+	return (result * value);
+}
+
+int	ft_atoi(const char *str)
+{
+	int				i;
+	int				count;
+	unsigned long	result;
+
+	i = 0;
+	count = 0;
+	result = 0;
+	while (str[i] == '\t' || str[i] == '\v' || str[i] == '\n' ||
+	str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		x = x * 10 - (*str++ - 48);
-		if (aux < x)
-		{
-			if (sinal < 0)
-				return (-1);
-			return (0);
-		}
-		aux = x;
+		if (str[i] == '-')
+			count++;
+		i++;
 	}
-	return (x * sinal);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + str[i] - '0';
+		i++;
+	}
+	return (ft_manage_longmin(result, count));
 }

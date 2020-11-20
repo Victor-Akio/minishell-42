@@ -3,40 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/21 18:07:57 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/01/27 14:21:08 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/15 17:43:50 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/28 11:33:47 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, unsigned long int len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char				*x;
-	char				*s;
-	unsigned long int	i;
+	char		*d;
+	const char	*s;
+	char		*lastd;
+	const char	*lasts;
 
-	x = (char *)dst;
-	s = (char *)src;
-	if (x < s)
+	d = dst;
+	s = src;
+	lastd = d + (len - 1);
+	lasts = s + (len - 1);
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	if (d < s)
 	{
-		i = 0;
-		while (i < len)
-		{
-			x[i] = s[i];
-			i++;
-		}
+		while (len--)
+			*d++ = *s++;
 	}
-	else if (x > s)
-	{
-		i = len;
-		while (i > 0)
-		{
-			x[i - 1] = s[i - 1];
-			i--;
-		}
-	}
+	else
+		while (len--)
+			*lastd-- = *lasts--;
 	return (dst);
 }

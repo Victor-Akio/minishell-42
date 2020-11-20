@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/24 12:40:29 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/01/27 19:02:00 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/17 17:22:57 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/25 12:02:07 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
+	size_t	beg;
+	size_t	end;
+	char	*new;
 
 	if (!s1 || !set)
-		return (0);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	i = ft_strlen(s1);
-	while (i && ft_strchr(set, s1[i]))
-		i--;
-	return (ft_substr(s1, 0, i + 1));
+		return (NULL);
+	beg = 0;
+	while (s1[beg] && ft_strchr(set, s1[beg]))
+		beg++;
+	end = ft_strlen(s1 + beg);
+	if (end)
+		while (s1[end + beg - 1] != 0 && ft_strchr(set, s1[end + beg - 1]) != 0)
+			end--;
+	if (!(new = malloc(sizeof(char) * end + 1)))
+		return (NULL);
+	ft_strncpy(new, s1 + beg, end);
+	new[end] = '\0';
+	return (new);
 }

@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 02:52:37 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/15 02:53:53 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/23 09:13:17 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/24 11:45:46 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(char *str, char *to_find)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int i;
-	int j;
-
-	i = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[i] != '\0')
+	if (lst)
 	{
-		j = 0;
-		while (str[i + j] != '\0' && str[i + j] == to_find[j])
+		while (lst != NULL)
 		{
-			if (to_find[j + 1] == '\0')
-				return (&str[i]);
-			++j;
+			f(lst->content);
+			lst = lst->next;
 		}
-		++i;
 	}
-	return (0);
 }

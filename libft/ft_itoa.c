@@ -3,55 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/24 14:45:53 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/01/27 14:24:01 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/17 13:32:15 by hbuisser          #+#    #+#             */
+/*   Updated: 2019/10/25 13:17:33 by hbuisser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*calc(int n, int count, char *str)
+static char	*ft_neg(int n)
 {
-	unsigned int	sinal;
+	int		tmpn;
+	int		len;
+	char	*str;
 
-	str[count] = 0;
-	count--;
-	sinal = (n > 0) ? n : -n;
-	while (sinal)
+	n *= -1;
+	tmpn = n;
+	len = 3;
+	while (tmpn /= 10)
+		len++;
+	if (!(str = (char*)malloc(sizeof(char) * len)))
+		return (NULL);
+	str[--len] = '\0';
+	while (len--)
 	{
-		str[count] = (sinal % 10) + '0';
-		sinal /= 10;
-		count--;
+		str[len] = n % 10 + '0';
+		n = n / 10;
 	}
-	if (!count)
-		str[count] = '-';
+	str[0] = '-';
 	return (str);
 }
 
-char	*ft_itoa(int n)
+static char	*ft_zero(void)
 {
-	int				count;
-	unsigned int	sinal;
-	char			*str;
+	int		len;
+	char	*str;
 
-	count = (n > 0) ? 0 : 1;
-	sinal = (n > 0) ? n : -n;
-	if (n == 0)
-	{
-		if (!(str = malloc(count + 1)))
-			return (NULL);
-		str[0] = '0';
-		str[1] = 0;
-		return (str);
-	}
-	while (sinal)
-	{
-		count++;
-		sinal /= 10;
-	}
-	if (!(str = malloc(count + 1)))
+	len = 2;
+	if (!(str = (char*)malloc(sizeof(char) * len)))
 		return (NULL);
-	return (calc(n, count, str));
+	str[0] = '0';
+	str[1] = '\0';
+	return (str);
+}
+
+char		*ft_itoa(int n)
+{
+	int	tmpn;
+	int	len;
+	char*str;
+
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n == 0)
+		return (ft_zero());
+	if (n <= 0)
+		return (ft_neg(n));
+	tmpn = n;
+	len = 2;
+	while (tmpn /= 10)
+		len++;
+	if (!(str = (char*)malloc(sizeof(char) * len)))
+		return (NULL);
+	str[--len] = '\0';
+	while (len--)
+	{
+		str[len] = n % 10 + '0';
+		n = n / 10;
+	}
+	return (str);
 }

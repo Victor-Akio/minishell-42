@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/22 09:24:42 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/08/22 09:30:29 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/20 04:03:50 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/11/20 07:13:10 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "msh.h"
 
-int				ft_isspace(int c)
+void			msh_exit(void)
 {
-	if (c == '\t' || c == '\n' || c == '\v' ||
-			c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
-}
-
-int				ft_arespace(char *line)
-{
-	size_t	i;
+	int			i;
 
 	i = 0;
-	while (ft_isspace(line[i]))
-		i++;
-	if (line[i] == '\0')
-		return (1);
-	return (0);
+	while (tmp_env[i])
+		free(tmp_env[i++]);
+	free(tmp_env);
+	exit(0);
+}
+
+void			read_input(char **input)
+{
+	char		buff[1];
+	int			bytes;
+
+	while ((bytes = read(0, buff, 1)) && buff[0] != '\n')
+		*input = ft_addchar(*input, buff[0]);
+	*input = ft_addchar(*input, '\0');
+	if (!bytes)
+	{
+		free(*input);
+		msh_exit();
+	}
 }

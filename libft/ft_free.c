@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/12 13:12:59 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/12 13:44:24 by vminomiy         ###   ########.fr       */
+/*   Created: 2019/10/24 08:41:39 by hbuisser          #+#    #+#             */
+/*   Updated: 2020/08/25 22:14:04 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strnew(size_t size)
+char	**ft_free(char **array, int size)
 {
-	char			*str;
-	size_t			i;
+	int	i;
 
 	i = 0;
-	str = (char *)malloc(sizeof(*str) * size + 1);
-	if (str == NULL)
-		return (NULL);
-	while (i <= size)
+	while (i < size)
 	{
-		str[i] = '\0';
+		free(array[i]);
 		i++;
 	}
-	return (str);
+	free(array);
+	return (NULL);
 }

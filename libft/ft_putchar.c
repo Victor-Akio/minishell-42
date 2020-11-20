@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@students.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/11 15:03:23 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/02/12 13:56:08 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/08/12 03:31:28 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/08/12 03:32:13 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putchar(int c)
+void			ft_putchar(char c)
 {
 	write(1, &c, 1);
-	return (1);
 }
