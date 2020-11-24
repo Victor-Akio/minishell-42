@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minishell.h                                     :+:      :+:    :+:   */
+/*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/14 21:40:40 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/19 01:33:05 by jaqrodri         ###   ########.fr       */
+/*   Created: 2020/11/19 01:32:21 by jaqrodri          #+#    #+#             */
+/*   Updated: 2020/11/19 01:34:12 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINISHELL_H
-# define FT_MINISHELL_H
+#include "ft_minishell.h"
 
-#include "libft.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
-
-#define BUFFER_SIZE 1024
-
-# include <stdio.h>
-
-void	ft_strdel(char **str);
-char	*msh_getline(void);
-
-
-
-
-#endif
+void	ft_strdel(char **str)
+{
+	if (*str && str)
+	{
+		free(*str);
+		*str = NULL;
+	}
+}

@@ -6,7 +6,7 @@
 #    By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/02 00:38:44 by jaqrodri          #+#    #+#              #
-#    Updated: 2020/11/14 21:41:13 by jaqrodri         ###   ########.fr        #
+#    Updated: 2020/11/19 01:57:22 by jaqrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ LD_FLAGS =	-L${LIBFT_DIR}	\
 			-lft 
 
 SRC_DIR = ./src
-SRC =	${SRC_DIR}/main.c 
+SRC =	${SRC_DIR}/main.c \
+		${SRC_DIR}/ft_strdel.c \
+		${SRC_DIR}/msh_getline.c 
 
 OBJ_DIR	=	./objects
 OBJ		=	$(patsubst ${SRC_DIR}/%.c, ${OBJ_DIR}/%.o, ${SRC})
@@ -41,7 +43,9 @@ OBJ		=	$(patsubst ${SRC_DIR}/%.c, ${OBJ_DIR}/%.o, ${SRC})
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -fsanitize=address $^  $(LD_FLAGS) -o $@
+	$(CC) $^  $(LD_FLAGS) -o $@
+	
+	# $(CC) -fsanitize=address $^  $(LD_FLAGS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c ${LIBFT} 
 	mkdir -p $(OBJ_DIR)
