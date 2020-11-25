@@ -6,7 +6,7 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 20:45:56 by vminomiy          #+#    #+#              #
-#    Updated: 2020/11/25 20:06:07 by vminomiy         ###   ########.fr        #
+#    Updated: 2020/11/25 23:20:00 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,11 @@ INCLUDE	=	-I ./include	\
 
 RM		=	/bin/rm -f
 
-SRC		=	$(DIR)/minishell.c			\
-			# $(DIR)/sighandler.c		\
-			# $(DIR)/utils.c			\
-			# $(DIR)/gnl.c			\
-			# $(DIR)/env.c
+SRC		=	$(DIR)/main.c			\
+			$(DIR)/sighandler.c		\
+			$(DIR)/utils.c			\
+			$(DIR)/gnl.c			\
+			$(DIR)/env.c
 			
 
 OBJ		=	$(patsubst %.c, %.o, ${SRC})
