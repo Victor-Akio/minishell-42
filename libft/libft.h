@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 10:30:11 by hbuisser          #+#    #+#             */
-/*   Updated: 2020/11/20 04:40:29 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/24 22:02:27 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int				ft_isspace(int c);
 int				ft_arespace(char *line);
 int				ft_iswall(int c);
 char			*ft_addchar(char *str, char c);
+void			ft_addstr(char ***arr, char *str);
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H

@@ -1,3 +1,10 @@
+./reserve/env.c
+./reserve/gnl.c
+./reserve/main.c
+./reserve/sghandler.c
+./reserve/utils.c
+reserve 
+
 # Prerequisites
 *.d
 

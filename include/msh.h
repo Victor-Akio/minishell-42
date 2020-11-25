@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/20 05:08:19 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/25 22:58:05 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,8 @@
 
 # include <stdio.h> //DELETAAAAAAAAAR
 
-char		**tmp_env;
-
-typedef struct	s_command
-{
-	char	***basic_com;
-	int		com_num;
-}				t_com;
-
-
-int     	    main(/*int ac, char **av, char **ep*/);
-void			sighandler(int sig);
-void			sighandler_c(int sig);
-char			**rm_empty_str(char **arr);
-void			read_input(char **input);
-void			msh_exit(void);
-void			save_env(int ac, char **av, char **ep);
+int     	    main(int ac, char **av, char **ev);
+t_list			*list_gen(void *content);
 
 
 #endif

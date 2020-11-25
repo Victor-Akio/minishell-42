@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_addstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 04:47:55 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/20 07:09:21 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/20 04:07:44 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/11/24 22:02:08 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "msh.h"
+#include "libft.h"
 
-void			save_env(int ac, char **av, char **ep)
+void			ft_addstr(char ***arr, char *str)
 {
+	char		**tmp;
+	int			len;
 	int			i;
-	int			j;
-	int			count;
 
+	len = ft_arraylen(*arr);
+	tmp = malloc(sizeof(char *) * (len + 2));
+	tmp[len + 1] = NULL;
+	tmp[len] = str;
 	i = -1;
-	j = -1;
-	count = ft_arraylen(ep) + 1;
-	(void)ac;
-	(void)av;
-	tmp_env = (char **)ft_calloc(count, sizeof(char *));
-	while (ep[++j])
-	{
-		if ((ft_strncmp("_=", ep[j], 2) == 0) && ep[j + 1])
-			j++;
-		if (!(tmp_env[++i] = ft_strdup(ep[j])))
-			msh_exit();
-	}
-	if (j - 1 > i && !(tmp_env[i + 1] = ft_strdup("_=./minishell")))
-		msh_exit();
+	while (*(*arr + ++i))
+		tmp[i] = *(*arr + i);
+	free(*arr);
+	*arr = tmp;
 }
