@@ -6,15 +6,13 @@
 #    By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/02 00:38:44 by jaqrodri          #+#    #+#              #
-#    Updated: 2020/11/19 01:57:22 by jaqrodri         ###   ########.fr        #
+#    Updated: 2020/11/26 14:52:57 by jaqrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-LIB_DIR = ./lib
-
-LIBFT_DIR = ${LIB_DIR}/libft
+LIBFT_DIR = ./lib
 LIBFT = ${LIBFT_DIR}/libft.a
 
 INCLUDE_DIR = ./include
@@ -34,7 +32,7 @@ LD_FLAGS =	-L${LIBFT_DIR}	\
 SRC_DIR = ./src
 SRC =	${SRC_DIR}/main.c \
 		${SRC_DIR}/ft_strdel.c \
-		${SRC_DIR}/msh_getline.c 
+		${SRC_DIR}/msh_read.c 
 
 OBJ_DIR	=	./objects
 OBJ		=	$(patsubst ${SRC_DIR}/%.c, ${OBJ_DIR}/%.o, ${SRC})

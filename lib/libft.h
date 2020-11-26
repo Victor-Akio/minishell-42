@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftJake.h                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/07 15:16:49 by lbarreta          #+#    #+#             */
-/*   Updated: 2020/02/14 14:07:26 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/25 22:45:28 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+#define BUFFER_SIZE 1024
+#define OPEN_MAX 256
 
 # include <sys/types.h>
 # include <sys/stat.h>
@@ -132,5 +135,16 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
+
+/*
+** GNL
+*/
+
+int					get_next_line(int fd, char **line);
+int					gnl_ft_findchar(char *str, char c);
+char				*gnl_ft_calloc(int size);
+int					gnl_ft_strlen(char *s);
+char				*gnl_ft_strjoin(char *s1, char *s2);
+char				*gnl_ft_substr(char *s, int start, int len);
 
 #endif

@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_minishell.h                                     :+:      :+:    :+:   */
+/*   msh_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/14 21:40:40 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/26 00:36:11 by jaqrodri         ###   ########.fr       */
+/*   Created: 2020/11/26 00:34:50 by jaqrodri          #+#    #+#             */
+/*   Updated: 2020/11/26 00:37:05 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MINISHELL_H
-# define FT_MINISHELL_H
+#include "ft_minishell.h"
 
-#include "libft.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
-
-#define BUFFER_SIZE 1024
-
-# include <stdio.h>
-
-typedef struct	s_msh
+char	*msh_read(t_msh *msh)
 {
-	char		*command;
-}				t_msh;
-
-void	ft_strdel(char **str);
-char	*msh_read(t_msh *msh);
-
-
-
-
-#endif
+	if (!(msh->command = ft_strdup("")))
+		return (NULL);
+	if (get_next_line(STDIN_FILENO, &msh->command) == -1)
+		return(NULL);
+	printf("%s\n", msh->command);
+	return (msh->command);
+}
