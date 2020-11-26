@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:58:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/25 23:34:13 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 00:56:27 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			main(int ac, char **av, char **ep)
 		signal(SIGINT, sighandler);
 		show_prompt();
 		read_input(&input);
-		com = split_inputs(input, ';');
+		com = split_quots(input, ';');
 		free(input);
 	}
 	return (0);

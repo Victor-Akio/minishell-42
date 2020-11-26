@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 10:51:37 by hbuisser          #+#    #+#             */
-/*   Updated: 2020/03/10 11:01:58 by hbuisser         ###   ########.fr       */
+/*   Created: 2020/11/26 19:00:45 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/11/26 19:22:48 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_wordlen(const char *s, char c, int i)
 	return (len);
 }
 
-char		**ft_strsplit(const char *s, char c)
+char		**ft_split(const char *s, char c)
 {
 	char	**tab;
 	int		i;

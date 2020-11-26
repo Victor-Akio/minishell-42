@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/25 23:33:30 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 00:52:03 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void			sighandler(int sig);
 void			sighandler_c(int sig);
 void			save_env(int ac, char **av, char **ep);
 void			msh_exit(void);
-
+char			**split_quots(char *str, char c);
 
 #endif
