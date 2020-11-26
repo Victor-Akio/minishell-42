@@ -6,11 +6,16 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:58:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 00:56:27 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 20:06:50 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "msh.h"
+
+/*
+** Show_promtp is responsible to clear the terminal and show the ">>" that means prompt is ready to receive the input.
+*/
+
 
 void		show_prompt(void)
 {
@@ -19,6 +24,7 @@ void		show_prompt(void)
 
 	dir_str[4096] = '\0';
 	getcwd(dir_str, 4096);
+	ft_putstr("\033[?1049h\033[H");
 	write(1, dir_str, ft_strlen(dir_str));
 	write(1, " ", 1);
 	prompt = ">> ";

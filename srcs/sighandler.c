@@ -6,11 +6,15 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 01:46:50 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/25 23:21:36 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 20:07:49 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "msh.h"
+
+/*
+** Sighandler will be the parent handler
+*/
 
 void			sighandler(int sig)
 {
@@ -22,6 +26,10 @@ void			sighandler(int sig)
 
 	}
 }
+
+/*
+** Sighandler C is the children handler.
+*/
 
 void			sighandler_c(int sig)
 {

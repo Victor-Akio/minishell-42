@@ -6,11 +6,15 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 04:47:55 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/25 23:32:57 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 19:55:23 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "msh.h"
+
+/*
+** Save_env will receive the arguments, It will save the env var in the correct position of the table.
+*/
 
 void			save_env(int ac, char **av, char **ep)
 {

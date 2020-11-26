@@ -6,11 +6,15 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 02:42:15 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 19:03:43 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 20:06:44 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "msh.h"
+
+/*
+** This functions is responsible to pick the smallets non zero command
+*/
 
 char			*non_zero_char(char *p1, char *p2)
 {
@@ -25,6 +29,10 @@ char			*non_zero_char(char *p1, char *p2)
 	else
 		return (p2);
 }
+
+/*
+** char_verify will validate the Quoted commands
+*/
 
 static int		char_verify(char **quotpos, char c)
 {
@@ -44,6 +52,10 @@ static int		char_verify(char **quotpos, char c)
 	}
 	return (0);
 }
+
+/*
+** It will remove the '\"' dummies.
+*/
 
 void			rm_dummies(char **table)
 {
@@ -68,6 +80,10 @@ void			rm_dummies(char **table)
 
 }
 
+/*
+** Between_quotes_pair, wil pick the content betweent the quotes and save
+*/
+
 int				between_quot_pair(char **quotpos, char *pos)
 {
 	int			i;
@@ -82,6 +98,10 @@ int				between_quot_pair(char **quotpos, char *pos)
 	}
 	return (-1);
 }
+
+/*
+** Count_unquoted will count every command that is not between quotes
+*/
 
 int				count_unquoted(char **quotpos, char *str, char c)
 {
@@ -102,6 +122,10 @@ int				count_unquoted(char **quotpos, char *str, char c)
 	}
 	return (count);
 }
+
+/*
+** Create and allocate the command array
+*/
 
 char			**set_pos(char *str)
 {
@@ -127,6 +151,10 @@ char			**set_pos(char *str)
 	return (quotpos);
 }
 
+/*
+** I will find the content of the Quoted parts
+*/
+
 char			*ft_strquots(char **quotpos, char *str, char c)
 {
 	int			i;
@@ -149,6 +177,10 @@ char			*ft_strquots(char **quotpos, char *str, char c)
 	return (0);
 }
 
+/*
+** With every data separated, the table will be populates accordingly.
+*/
+
 static void		table_loop(char **tab, char *str, char c, char **quotpos)
 {
 	int			i;
@@ -165,6 +197,10 @@ static void		table_loop(char **tab, char *str, char c, char **quotpos)
 	}
 	tab[++i] = ft_strdup(str);
 }
+
+/*
+** Split_quots is responsible to separate every command. Remember to remove the dummies quotes, that should not be processed as command.
+*/
 
 char			**split_quots(char *str, char c)
 {
@@ -187,6 +223,10 @@ char			**split_quots(char *str, char c)
 	return (table);
 }
 
+/*
+** free_all will do the free job throught the program 
+*/
+
 void			free_all(void **buff, int len)
 {
 	int		i;
@@ -202,6 +242,10 @@ void			free_all(void **buff, int len)
 		free(buff);
 	}
 }
+
+/*
+** we need to remove the unnecessary blank string 
+*/
 
 char			**rm_empty_str(char **arr)
 {
