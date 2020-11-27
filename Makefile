@@ -6,7 +6,7 @@
 #    By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/02 00:38:44 by jaqrodri          #+#    #+#              #
-#    Updated: 2020/11/26 14:52:57 by jaqrodri         ###   ########.fr        #
+#    Updated: 2020/11/26 17:37:13 by jaqrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,10 @@ LD_FLAGS =	-L${LIBFT_DIR}	\
 SRC_DIR = ./src
 SRC =	${SRC_DIR}/main.c \
 		${SRC_DIR}/ft_strdel.c \
+		${SRC_DIR}/ft_isspace.c \
+		${SRC_DIR}/ft_ignorechar.c \
+		${SRC_DIR}/parser_echo.c \
+		${SRC_DIR}/msh_parser.c \
 		${SRC_DIR}/msh_read.c 
 
 OBJ_DIR	=	./objects

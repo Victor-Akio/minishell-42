@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   msh_read.c                                         :+:      :+:    :+:   */
+/*   parser_echo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 00:34:50 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/26 20:17:35 by jaqrodri         ###   ########.fr       */
+/*   Created: 2020/11/26 17:28:35 by jaqrodri          #+#    #+#             */
+/*   Updated: 2020/11/27 06:22:11 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-char	*msh_read(t_msh *msh)
+int	parser_echo(char **line)
 {
-	if (!(msh->command = ft_strdup("")))
-		return (NULL);
-	if (get_next_line(STDIN_FILENO, &msh->command) == -1)
-		return(NULL);
-	// printf("%s\n", msh->command);
-	return (msh->command);
+	int	nl;
+
+	nl = 1;
+	(*line) += 4;
+	ft_ignorechar(line, ' ');
+	if (ft_strncmp((*line), "-n", 2) == 0)
+	{
+		nl = 0;
+		(*line) += 2;
+	}
+	while (**line != '\0')
+	{
+		// if(**line == '$')
+		// 	get_var(line);
+		if (**line != '\"' && **line != '\'')
+			ft_putchar_fd(**line, 1);
+		(*line)++;
+	}
+	
+	if (nl)
+		ft_putstr_fd("\n", 1);
+	return (1);
 }

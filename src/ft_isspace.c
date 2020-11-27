@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   msh_read.c                                         :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 00:34:50 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/26 20:17:35 by jaqrodri         ###   ########.fr       */
+/*   Created: 2020/11/26 17:25:01 by jaqrodri          #+#    #+#             */
+/*   Updated: 2020/11/26 17:26:15 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minishell.h"
 
-char	*msh_read(t_msh *msh)
+int		ft_isspace(char c)
 {
-	if (!(msh->command = ft_strdup("")))
-		return (NULL);
-	if (get_next_line(STDIN_FILENO, &msh->command) == -1)
-		return(NULL);
-	// printf("%s\n", msh->command);
-	return (msh->command);
+	return ((c == '\t' || c == '\v' || c == '\n' ||
+c == '\r' || c == '\f' || c == ' '));
 }

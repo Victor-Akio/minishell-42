@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 21:39:25 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/26 16:41:13 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/26 17:38:35 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int			msh_prompt()
 		ft_putstr_fd(" >> ", 1);
 		if (!(msh.command = msh_read(&msh)))
 			return (-1);
-		// if (swith_command() < 0)
-		// 	return (0);
+		if (msh_parser(&msh) < 0)
+			return (0);
 	}
 }
 

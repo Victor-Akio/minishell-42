@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 21:40:40 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/26 00:36:11 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/26 18:53:23 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,17 @@ typedef struct	s_msh
 {
 	char		*command;
 }				t_msh;
-
+/*
+ * Utils
+ */
 void	ft_strdel(char **str);
+char	*ft_ignorechar(char **line, char c);
+int		ft_isspace(char c);
+
 char	*msh_read(t_msh *msh);
+int		msh_parser(t_msh *msh);
+
+int		parser_echo();//char *line, t_msh *msh)
 
 
 
