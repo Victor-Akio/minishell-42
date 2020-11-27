@@ -4,6 +4,8 @@
 ./reserve/sghandler.c
 ./reserve/utils.c
 reserve 
+.vscode
+.gitignore
 
 # Prerequisites
 *.d
