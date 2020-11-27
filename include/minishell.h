@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/27 22:57:55 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/27 23:27:05 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char			**rm_empty_str(char **arr);
 int				count_unquoted(char **quotpos, char *str, char c);
 char			**set_pos(char *str);
 void			rm_quotes(char **arr);
-int				parser_com(char **coms, t_commands *table, int size);
+int				tolken_gen(char **coms, t_commands *table, int size);
 void			execute_com(t_commands *table, int index);
 void			com_exit(void);
 void			com_echo(char **av);

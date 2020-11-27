@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 20:47:28 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/27 19:03:28 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/27 23:48:29 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int				free_parser_error(t_commands *table, int index, char **coms)
 	return (1);
 }
 
-int				parser_com(char **coms, t_commands *table, int size)
+int				tolken_gen(char **coms, t_commands *table, int size)
 {
 	int			i;
 	int			j;

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:58:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/27 16:56:13 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/27 23:26:38 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			main(int ac, char **av, char **ep)
 		com = rm_empty_str(com);
 		if (!(table = malloc(sizeof(t_commands) * ft_arraylen(com))))
 			return (EXIT_FAILURE);
-		if (!(parser_com(com, table, ft_arraylen(com))))
+		if (!(tolken_gen(com, table, ft_arraylen(com))))
 			execute_com(table, ft_arraylen(com));
 	}
 	return (0);
