@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbuisser <hbuisser@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 13:43:15 by hbuisser          #+#    #+#             */
-/*   Updated: 2019/10/24 11:45:29 by hbuisser         ###   ########.fr       */
+/*   Created: 2020/11/27 16:57:17 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/11/27 16:57:18 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -6,11 +6,11 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 01:46:50 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 20:07:49 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 20:50:47 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "msh.h"
+#include "minishell.h"
 
 /*
 ** Sighandler will be the parent handler

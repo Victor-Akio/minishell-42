@@ -6,11 +6,35 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 02:42:15 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 20:06:44 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/27 18:00:52 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "msh.h"
+#include "minishell.h"
+
+void			rm_quotes(char **arr)
+{
+	int			i;
+	char		*quotpos[2];
+	char		*tmp;
+
+	i = -1;
+	if (!*arr)
+		return ;
+	while (*(*arr + ++i))
+	{
+		if ((quotpos[0] = non_zero_char(ft_strchr(*arr, '"'),
+			ft_strchr(*arr, '\''))) && (quotpos[1] = ft_strchr(quotpos[0] + 1,
+			*quotpos[0])))
+		{
+			*quotpos[0] = '\0';
+			*quotpos[1] = '\0';
+			tmp = ft_strjoin(*arr, quotpos[0] + 1);
+			free(*arr);
+			*arr = tmp;
+		}
+	}
+}
 
 /*
 ** This functions is responsible to pick the smallets non zero command

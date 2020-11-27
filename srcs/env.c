@@ -6,11 +6,11 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 04:47:55 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 19:55:23 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 20:50:31 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "msh.h"
+#include "minishell.h"
 
 /*
 ** Save_env will receive the arguments, It will save the env var in the correct position of the table.

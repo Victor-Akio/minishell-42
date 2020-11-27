@@ -6,11 +6,11 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:58:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 20:06:50 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/27 16:56:13 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "msh.h"
+#include "minishell.h"
 
 /*
 ** Show_promtp is responsible to clear the terminal and show the ">>" that means prompt is ready to receive the input.
@@ -24,7 +24,7 @@ void		show_prompt(void)
 
 	dir_str[4096] = '\0';
 	getcwd(dir_str, 4096);
-	ft_putstr("\033[?1049h\033[H");
+	// ft_putstr("\033[?1049h\033[H");
 	write(1, dir_str, ft_strlen(dir_str));
 	write(1, " ", 1);
 	prompt = ">> ";
@@ -36,6 +36,7 @@ int			main(int ac, char **av, char **ep)
 {
 	char		*input;
 	char		**com;
+	t_commands	*table;
 
 	signal(SIGQUIT, sighandler);
 	save_env(ac, av, ep);
@@ -47,7 +48,14 @@ int			main(int ac, char **av, char **ep)
 		show_prompt();
 		read_input(&input);
 		com = split_quots(input, ';');
+		if (check_empty_com(com, &input))
+			continue;
 		free(input);
+		com = rm_empty_str(com);
+		if (!(table = malloc(sizeof(t_commands) * ft_arraylen(com))))
+			return (EXIT_FAILURE);
+		if (!(parser_com(com, table, ft_arraylen(com))))
+			execute_com(table, ft_arraylen(com));
 	}
 	return (0);
 }

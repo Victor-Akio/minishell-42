@@ -6,11 +6,11 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 04:03:50 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 19:53:02 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/26 20:50:22 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "msh.h"
+#include "minishell.h"
 
 /*
 ** msh_exit, is responsible to free the temporary var used during the process.

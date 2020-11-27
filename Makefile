@@ -6,7 +6,7 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 20:45:56 by vminomiy          #+#    #+#              #
-#    Updated: 2020/11/25 23:20:00 by vminomiy         ###   ########.fr        #
+#    Updated: 2020/11/27 18:48:18 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,11 @@ SRC		=	$(DIR)/main.c			\
 			$(DIR)/sighandler.c		\
 			$(DIR)/utils.c			\
 			$(DIR)/gnl.c			\
-			$(DIR)/env.c
+			$(DIR)/env.c			\
+			$(DIR)/parser.c			\
+			$(DIR)/exec.c			\
+			$(DIR)/echo.c			\
+			$(DIR)/exit.c
 			
 
 OBJ		=	$(patsubst %.c, %.o, ${SRC})
