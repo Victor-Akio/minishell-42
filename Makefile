@@ -6,7 +6,7 @@
 #    By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 20:45:56 by vminomiy          #+#    #+#              #
-#    Updated: 2020/11/28 14:49:20 by jaqrodri         ###   ########.fr        #
+#    Updated: 2020/11/28 15:21:11 by jaqrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRC		=	$(DIR)/main.c			\
 			$(DIR)/env.c			\
 			$(DIR)/parser.c			\
 			$(DIR)/exec.c			\
-			$(DIR)/parser_echo.c	\
+			$(DIR)/com_echo.c		\
+			$(DIR)/com_pwd.c		\
 			$(DIR)/ft_ignorechar.c	\
 			$(DIR)/exit.c
 			

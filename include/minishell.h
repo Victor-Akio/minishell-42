@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/28 14:49:44 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/28 15:24:52 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,15 @@ char			**set_pos(char *str);
 void			rm_quotes(char **arr);
 int				tolken_gen(char **coms, t_commands *table, int size);
 void			execute_com(t_commands *table, int index);
-void			com_exit(void);
-void			com_echo(char **av);
 char			*non_zero_char(char *p1, char *p2);
 char			*ft_strquots(char **quotpos, char *str, char c);
 void			free_ptrs(t_commands *table);
 void			fork_error(void);
 void			com_not_found(char *str);
-int				parser_echo(char **line);
 char			*ft_ignorechar(char **line, char c);
+
+void			com_echo(char **line);
+void			com_pwd(void);
+void			com_exit(void);
 
 #endif

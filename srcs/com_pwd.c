@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_echo.c                                      :+:      :+:    :+:   */
+/*   com_pwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 17:28:35 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/28 14:47:16 by jaqrodri         ###   ########.fr       */
+/*   Created: 2020/11/28 15:11:40 by jaqrodri          #+#    #+#             */
+/*   Updated: 2020/11/28 15:24:35 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	parser_echo(char **line)
+void	com_pwd(void)
 {
-	int	nl;
+	char	dir_str[4096 + 1];
 
-	nl = 1;
-	(*line) += 4;
-	ft_ignorechar(line, ' ');
-	if (ft_strncmp((*line), "-n", 2) == 0)
-	{
-		nl = 0;
-		(*line) += 2;
-	}
-	while (**line != '\0')
-	{
-		if (**line != '\"' && **line != '\'')
-			ft_putchar_fd(**line, 1);
-		(*line)++;
-	}
-	if (nl)
-		ft_putstr_fd("\n", 1);
-	return (1);
+	dir_str[4096] = '\0';
+	getcwd(dir_str, 4096);
+	write(1, dir_str, ft_strlen(dir_str));
+	write(1, "\n", 1);
 }

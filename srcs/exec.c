@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:01:58 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/28 14:47:05 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/28 15:18:05 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ void			pick_com_exec(char **arr, t_commands *table)
 {
 	table->index = 0;
 	if (!(ft_strcmp(arr[0], "echo")))
-		parser_echo(arr);
+		com_echo(arr);
 	// else if (!(ft_strcmp(arr[0], "cd")) && !((table->coms != 1)
 	// 	&& (ft_arrlen(arr) == 1)))
 	// 	com_cd(arr);
-	// else if (!(ft_strcmp(arr[0], "pwd")))
-	// 	com_pwd(arr);
+	else if (!(ft_strcmp(arr[0], "pwd")))
+		com_pwd(arr);
 	// else if (!(ft_strcmp(arr[0], "export")) && (table->coms == 1))
 	// 	com_export(arr);
 	// else if (!(ft_strcmp(arr[0], "unset")) && (table->coms == 1))
