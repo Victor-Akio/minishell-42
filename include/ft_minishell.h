@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 21:40:40 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/26 18:53:23 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/27 19:22:13 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,21 @@
 
 # include <stdio.h>
 
+// typedef struct	s_lstcmds
+// {
+// 	char		*name;
+// 	int			type;
+// 	// int			pipe[2];
+// 	char		**data;
+// 	void		*prev;
+// 	void		*next;
+// }				t_lstcmds;
+
 typedef struct	s_msh
 {
 	char		*command;
 }				t_msh;
+
 /*
  * Utils
  */

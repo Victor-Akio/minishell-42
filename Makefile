@@ -6,7 +6,7 @@
 #    By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/02 00:38:44 by jaqrodri          #+#    #+#              #
-#    Updated: 2020/11/26 17:37:13 by jaqrodri         ###   ########.fr        #
+#    Updated: 2020/11/27 17:08:45 by jaqrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c ${LIBFT}
 	$(CC) $(CC_FLAGS) $< -o $@
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) bonus -C $(LIBFT_DIR)
 
 clean:
 	$(MAKE) -C ${LIBFT_DIR} clean; \
