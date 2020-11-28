@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/27 23:27:05 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/11/28 14:49:44 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ char			*ft_strquots(char **quotpos, char *str, char c);
 void			free_ptrs(t_commands *table);
 void			fork_error(void);
 void			com_not_found(char *str);
+int				parser_echo(char **line);
+char			*ft_ignorechar(char **line, char c);
 
 #endif

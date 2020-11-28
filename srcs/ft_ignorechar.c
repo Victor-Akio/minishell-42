@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   ft_ignorechar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/27 18:42:53 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/27 19:08:48 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/11/26 17:12:04 by jaqrodri          #+#    #+#             */
+/*   Updated: 2020/11/28 14:49:05 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void			com_echo(char **av)
+char	*ft_ignorechar(char **line, char c)
 {
-	av = 0;
-	write(1, "echo ok\n", 8);
+	while(**line == c)
+		(*line)++;
+	return (*line);
 }
