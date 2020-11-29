@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:01:58 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/28 15:18:05 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/29 10:48:04 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,17 @@ void			pick_com_exec(char **arr, t_commands *table)
 	table->index = 0;
 	if (!(ft_strcmp(arr[0], "echo")))
 		com_echo(arr);
-	// else if (!(ft_strcmp(arr[0], "cd")) && !((table->coms != 1)
-	// 	&& (ft_arrlen(arr) == 1)))
-	// 	com_cd(arr);
+	else if (!(ft_strcmp(arr[0], "cd")) && !((table->com_index != 1)
+		&& (ft_arraylen(arr) == 1)))
+		com_cd(arr);
 	else if (!(ft_strcmp(arr[0], "pwd")))
-		com_pwd(arr);
-	// else if (!(ft_strcmp(arr[0], "export")) && (table->coms == 1))
+		com_pwd();
+	// else if (!(ft_strcmp(arr[0], "export")) && (table->com_index == 1))
 	// 	com_export(arr);
-	// else if (!(ft_strcmp(arr[0], "unset")) && (table->coms == 1))
+	// else if (!(ft_strcmp(arr[0], "unset")) && (table->com_index == 1))
 	// 	com_unset(arr);
-	// else if (!(ft_strcmp(arr[0], "env")))
-	// 	com_env(arr);
+	else if (!(ft_strcmp(arr[0], "env")))
+		com_env();
 	else if (!(ft_strcmp(arr[0], "exit")))
 		com_exit();
 }

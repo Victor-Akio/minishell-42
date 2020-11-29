@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/28 15:24:52 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/29 10:51:11 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <stdio.h> //DELETAAAAAAAAAR
 
 char	**tmp_env;
+char	*old_pwd;
 
 typedef struct	s_commands
 {
@@ -65,8 +66,13 @@ void			fork_error(void);
 void			com_not_found(char *str);
 char			*ft_ignorechar(char **line, char c);
 
+char			*find_envvar(char *str);
 void			com_echo(char **line);
-void			com_pwd(void);
+void			com_cd(char **line);
 void			com_exit(void);
+void			com_pwd(void);
+void			com_env(void);
+
+
 
 #endif
