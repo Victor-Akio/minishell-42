@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/29 10:51:11 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/29 14:06:22 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ void			fork_error(void);
 void			com_not_found(char *str);
 char			*ft_ignorechar(char **line, char c);
 
-char			*find_envvar(char *str);
+char			*get_envvar(char *str, int len);
+int				find_envvar(char *str);
+void			com_export(char **line);
+void			com_unset(char **line);
 void			com_echo(char **line);
 void			com_cd(char **line);
 void			com_exit(void);

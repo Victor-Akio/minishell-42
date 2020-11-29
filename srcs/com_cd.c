@@ -6,7 +6,7 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/28 18:31:51 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/29 10:50:21 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/29 12:38:58 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	com_cd(char **line)
 
 	if (!ft_strcmp(line[1], ""))
 	{
-		line[1] = ft_strdup(find_envvar("HOME"));
+		line[1] = ft_strdup(get_envvar("HOME=", 5));
 	}
 	errno = 0;
 	if (chdir(line[1]) < 0)
