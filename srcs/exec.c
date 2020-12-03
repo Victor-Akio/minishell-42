@@ -6,42 +6,11 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:01:58 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/28 00:15:32 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/12/03 20:31:51 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void			free_ptrs(t_commands *table)
-{
-	free(table->coms);
-	// free(table->i_files);
-	// free(table->o_files);
-	// free(table->ap_files);
-	// free(table->d_files);
-}
-
-void			free_table(t_commands *table, int index)
-{
-	int 		i;
-	int			j;
-
-	i = -1;
-	while (++i < index)
-	{
-		j = -1;
-		while (++j < table[i].com_index)
-		{
-			free_all((void **)table[i].coms[j], ft_arraylen(table[i].coms[j]));
-			// free_all((void **)table[i].i_files[j], ft_arraylen(table[i].i_files[j]));
-			// free_all((void **)table[i].o_files[j], ft_arraylen(table[i].o_files[j]));
-			// free_all((void **)table[i].ap_files[j], ft_arraylen(table[i].ap_files[j]));
-			// free_all((void **)table[i].d_files[j], ft_arraylen(table[i].d_files[j]));
-		}
-		free_ptrs(table + i);
-	}
-	free(table);
-}
 
 static void		reset_values(int *fd)
 {
@@ -51,191 +20,57 @@ static void		reset_values(int *fd)
 	close(fd[1]);
 }
 
-int				coms_handler(char **arr)
+static void		redirect_input(t_commands *table, int *i, int *fd)
 {
-	if (!arr[0])
-		return (0);
-	else if (!(ft_strcmp(arr[0], "echo")))
-		return (1);
-	else if (!(ft_strcmp(arr[0], "cd")))
-		return (1);
-	else if (!(ft_strcmp(arr[0], "pwd")))
-		return (1);
-	else if (!(ft_strcmp(arr[0], "export")))
-		return (1);
-	else if (!(ft_strcmp(arr[0], "unset")))
-		return (1);
-	else if (!(ft_strcmp(arr[0], "env")))
-		return (1);
-	else if (!(ft_strcmp(arr[0], "exit")))
-		return (1);
-	else
-		return (0);
+	if (!(table->i_files[i[1]][0]) && (i[1] == 0))
+		fd[2] = dup(fd[0]);
+	else if (i[1] == 0)
+		fd[2] = open(table->i_files[i[1]][0], O_RDONLY);
+	dup2(fd[2], 0);
+	close(fd[2]);
 }
 
-void			pick_com_exec(char **arr, t_commands *table)
+static void		redirect_output(t_commands *table, int *i, int *fd, int *pp)
 {
-	table->index = 0;
-	if (!(ft_strcmp(arr[0], "echo")))
-		com_echo(arr);
-	// else if (!(ft_strcmp(arr[0], "cd")) && !((table->coms != 1)
-	// 	&& (ft_arrlen(arr) == 1)))
-	// 	com_cd(arr);
-	// else if (!(ft_strcmp(arr[0], "pwd")))
-	// 	com_pwd(arr);
-	// else if (!(ft_strcmp(arr[0], "export")) && (table->coms == 1))
-	// 	com_export(arr);
-	// else if (!(ft_strcmp(arr[0], "unset")) && (table->coms == 1))
-	// 	com_unset(arr);
-	// else if (!(ft_strcmp(arr[0], "env")))
-	// 	com_env(arr);
-	else if (!(ft_strcmp(arr[0], "exit")))
-		com_exit();
+	int			x;
+
+	x = table->com_index - 1;
+	if ((i[1] == x) && !(table->o_files[i[1]][0]) && !(table->ap_files[i[1]][0]))
+		fd[3] = dup(fd[1]);
+	else if ((i[1] == x) && (table->ap_files[i[1]][0]))
+		fd[3] = open(table->ap_files[i[1]][0], O_CREAT | O_WRONLY | O_APPEND, S_IWUSR | S_IRUSR);
+	else if ((i[1] == x) && (table->o_files[i[1]][0]))
+		fd[3] = open(table->o_files[i[1]][0], O_CREAT | O_WRONLY | O_APPEND, S_IWUSR | S_IRUSR);
+	else if (i[1] == x)
+	{
+		pipe(pp);
+		fd[3] = pp[1];
+		fd[2] = pp[0];
+	}
+	dup2(fd[3], 1);
+	close(fd[3]);
 }
 
-char			*env_handler(char *ev)
+static void		tmp_files(char **arr)
 {
-	int			len;
-	char		*res;
 	int			i;
 
 	i = -1;
-	while (ev[++i] && (ev[i] != ' ') && (ev[i] != '\t') && (ev[i] != '\'') && (ev[i] != '"') && (ev[i]  != '\n'))
-		;
-	len = i;
-	i = 0;
-	while (tmp_env[i] && ft_strncmp(ev, tmp_env[i], len) != 0)
-		i++;
-	if (!tmp_env[i] || tmp_env[i][len] != '=')
-		res = ft_strdup("");
-	else
-		res = ft_substr(tmp_env[i], len + 1, ft_strlen(tmp_env[i]));
-	return (res);
-}
-
-char			**save_syspath(void)
-{
-	char		*tmp;
-	char		**path;
-	int			count;
-	int			i;
-	int			j;
-
-	count = 0;
-	i = 0;
-	j = 0;
-	tmp = env_handler("PATH");
-	if (tmp[ft_strlen(tmp) - 1] != ':')
-		tmp = ft_addchar(tmp, ':');
-	while (tmp[++i])
-		if (tmp[i] == ':')
-			j++;
-	path = (char **)ft_calloc(j + 1, sizeof(char *));
-	i = 0;
-	j = 0;
-	while (tmp[++i])
+	while (arr[++i])
 	{
-		if (tmp[i] == ':')
+		if (open(arr[i], O_CREAT, S_IRUSR | S_IWUSR) < 0)
 		{
-			path[count] = ft_substr(tmp, j, i - j + 1);
-			path[count++][i - j] = '/';
-			j = i + 1;
+			write(2, "ERROR - ", 8);
+			write(2, strerror(errno), ft_strlen(strerror(errno)));
 		}
 	}
-	free(tmp);
-	return (path);	
-}
-
-int				sys_path(char **arr)
-{
-	struct stat	sb;
-	char		**path;
-	char		*tmp;
-	int			i;
-
-	path = save_syspath();
-	i =  -1;
-	while (path[++i])
-	{
-		tmp = ft_strjoin(path[i], *arr);
-		if (stat(tmp, &sb) == 0)
-		{
-			free(*arr);
-			*arr = tmp;
-			ft_freearray(path);
-			return (1);
-		}
-		free(tmp);
-	}
-	ft_freearray(path);
-	return (0);
-}
-
-int				exec_pathfinder(char **arr)
-{
-	char		*tmp[2];
-
-	if (!*arr || ft_strlen(*arr) <= 1)
-		return (0);
-	if (**arr == '/')
-		return (1);
-	if (sys_path(arr))
-		return (1);
-	if (*(*arr) == '.')
-	{
-		if (((*(*arr + 1) == '.') && (*(*arr + 2) == '/')) || (*(*arr + 1) == '/'))
-			return (1); 
-		return (0);
-	}
-	else if ((*(*arr) == '~') && (*(*arr + 1) == '/'))
-	{
-		tmp[0] = env_handler("HOME");
-		tmp[1] = ft_strjoin(tmp[0], *arr + 1);
-		free(tmp[0]);
-		*arr = tmp[1];
-		return (1);
-	}
-	return (0);
-}
-
-void			launch_exec(char **arr)
-{
-	int			ret;
-
-	if ((ret = fork()) < 0)
-		fork_error();
-	signal(SIGINT, sighandler_c);
-	if (ret == 0)
-	{
-		if ((execve(arr[0], arr, tmp_env) < 0))
-		{
-			write(2, "ERROR - EOF while looking for matching quote\n", 42);
-			exit(1);
-		}
-		else
-			exit(0);
-	}
-	waitpid(-1, NULL, 0);
-}
-
-void			fork_error(void)
-{
-	write(2, "ERROR - Fork error\n", 19);
-	msh_exit();
-}
-
-void			coms_not_found(char *str)
-{
-	write(2, "MSH - ", 6);
-	write(2, str, ft_strlen(str));
-	write(2, " command not found.\n", 20);
 }
 
 void			execute_com(t_commands *table, int index)
 {
 	int			i[2];
 	int			fd[4];
-	// int			pp[2];
+	int			pp[2];
 
 	i[0] = -1;
 	while (++(i[0]) < index)
@@ -245,9 +80,9 @@ void			execute_com(t_commands *table, int index)
 		i[1] = -1;
 		while ((table[i[0]].coms[++(i[1])]))
 		{
-			// redirect_input(table + i[0], &e);
-			// redirect_output(table + i[0], &e);
-			// tmp_files(tmp);
+			redirect_input(table + i[0], i, fd);
+			redirect_output(table + i[0], i, fd, pp);
+			tmp_files(table[i[0]].d_files[i[1]]);
 			if (coms_handler(table[i[0]].coms[i[1]]))
 				pick_com_exec(table[i[0]].coms[i[1]], table + i[0]);
 			else if ((exec_pathfinder(table[i[0]].coms[i[1]])))

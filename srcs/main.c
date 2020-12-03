@@ -6,29 +6,47 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:58:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/27 23:26:38 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/12/03 21:53:19 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static int	check_empty_com(char **table, char **input)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	j = ft_arraylen(table);
+	while (table[++i])
+	{
+		if (((table[i][0] == '\0') || ft_all_spaces(table[i])) && (j != 1))
+		{
+			write(2, "ERROR - Syntax error.\n", 22);
+			free(*input);
+			*input = NULL;
+			free_all((void **)table, ft_arraylen(table));
+			return (1);
+		}
+	}
+	return (0);
+}
+
 /*
 ** Show_promtp is responsible to clear the terminal and show the ">>" that means prompt is ready to receive the input.
 */
 
-
 void		show_prompt(void)
 {
 	char		dir_str[4096 + 1];
-	char		*prompt;
 
 	dir_str[4096] = '\0';
 	getcwd(dir_str, 4096);
 	// ft_putstr("\033[?1049h\033[H");
 	write(1, dir_str, ft_strlen(dir_str));
 	write(1, " ", 1);
-	prompt = ">> ";
-	write(1, prompt, 3);
+	write(1, ">> ", 3);
 	write(1, " ", 1);
 }
 

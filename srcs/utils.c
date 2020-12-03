@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 02:42:15 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/27 18:00:52 by vminomiy         ###   ########.fr       */
+/*   Updated: 2020/12/03 21:51:43 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,8 @@ char			*non_zero_char(char *p1, char *p2)
 		return (p2);
 	else if (!p2)
 		return (p1);
-	else if (p1 < p2)
-		return (p1);
 	else
-		return (p2);
+		return ((p1 < p2) ? p1 : p2);
 }
 
 /*
@@ -87,12 +85,12 @@ void			rm_dummies(char **table)
 	char		*quotpos[2];
 	char		*tmp;
 
-	i = -1;
-	while (table[++i])
+	i = 0;
+	while (table[i])
 	{
 		if ((quotpos[0] = non_zero_char(ft_strchr(table[i], '"'), ft_strchr(table[i], '\'')))
 			&& (quotpos[1] = ft_strchr(quotpos[0] + 1, *quotpos[0]))
-			&& (quotpos[1] - quotpos[0] == 1))
+			&& ((quotpos[1] - quotpos[0]) == 1))
 		{
 			*quotpos[0] = '\0';
 			*quotpos[1] = '\0';
@@ -100,8 +98,8 @@ void			rm_dummies(char **table)
 			free(table[i]);
 			table[i] = tmp;
 		}
+		i++;
 	}
-
 }
 
 /*
@@ -208,11 +206,9 @@ char			*ft_strquots(char **quotpos, char *str, char c)
 static void		table_loop(char **tab, char *str, char c, char **quotpos)
 {
 	int			i;
-	int			j;
 	char		*pos;
 
 	i = -1;
-	j = ft_arraylen(quotpos);
 	while ((pos = ft_strquots(quotpos, str, c)))
 	{
 		*pos = '\0';
@@ -239,32 +235,12 @@ char			**split_quots(char *str, char c)
 		return (ft_split(str, c));
 	}
 	count = count_unquoted(quotpos, str, c);
-	table = malloc(sizeof(char *) * (count * 2));
+	table = malloc(sizeof(char *) * (count + 2));
 	table[count + 1] = NULL;
 	table_loop(table, str, c, quotpos);
 	rm_dummies(table);
 	free(quotpos);
 	return (table);
-}
-
-/*
-** free_all will do the free job throught the program 
-*/
-
-void			free_all(void **buff, int len)
-{
-	int		i;
-
-	if (buff)
-	{
-		i = -1;
-		while (++i < len && buff[i])
-		{
-			if (buff[i])
-				free(buff[i]);
-		}
-		free(buff);
-	}
 }
 
 /*

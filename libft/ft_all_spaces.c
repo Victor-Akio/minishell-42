@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl.c                                              :+:      :+:    :+:   */
+/*   ft_all_spaces.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 04:03:50 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 19:50:36 by vminomiy         ###   ########.fr       */
+/*   Created: 2020/12/03 21:38:07 by vminomiy          #+#    #+#             */
+/*   Updated: 2020/12/03 21:38:51 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-/*
-** Read_input is responsible to pick each character of the input line and save.
-*/
-
-void			read_input(char **input)
+int				ft_all_spaces(char *str)
 {
-	char		buff[1];
-	int			bytes;
+	int			i;
+	int			j;
 
-	while ((bytes = read(0, buff, 1)) && buff[0] != '\n')
-		*input = ft_addchar(*input, buff[0]);
-	*input = ft_addchar(*input, '\0');
-	if (!bytes)
-	{
-		free(*input);
-		msh_exit();
-	}
+	i = -1;
+	j = ft_strlen(str);
+	while ((++i < j) && (ft_isspace(str[i]) && str[i] != '\n'))
+		;
+	if (i == j)
+		return (1);
+	else
+		return (0);
 }
