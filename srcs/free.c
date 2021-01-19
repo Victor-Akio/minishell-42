@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:30:27 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 21:52:22 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:00:07 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,17 @@
 ** free_all will do the free job throught the program 
 */
 
+void			free_array(char **str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+	return ;
+}
+
 void			free_all(void **buff, int len)
 {
 	int		i;
@@ -23,7 +34,7 @@ void			free_all(void **buff, int len)
 	if (buff)
 	{
 		i = -1;
-		while (++i <= len && buff[i])
+		while (++i < len && buff[i])
 		{
 			if (buff[i])
 				free(buff[i]);

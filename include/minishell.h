@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 22:20:10 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:49:51 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,15 @@ typedef struct	s_xy
 	int		y;
 }				t_xy;
 /*
-** exit
+** Functions
 */
 void			msh_exit(void);
 void			com_exit(void);
-/*
-**	Echo
-*/
 void			com_echo(char **arg);
+void			com_env(char **arg);
+void			com_pwd(char **arg);
+void			com_unset(char **arg);
+void			com_export(char **arg);
 /*
 ** GNL
 */
@@ -99,7 +100,11 @@ void			resize_arr_pos(char ***arr, int pos);
 int				set_redirection(t_commands *table, int *i);
 void			count_redirections(char **arr, int *count);
 void			redir_files_updt(t_commands *table, int *i, char *str, int index);
-
+int				envp_len(char **envp);
+int				input_minishell(char **input, char c);
+int				quote_handler(char **arg, int i);
+void			replace_var(char **dir, char *ptr);
+void			rm_backslash(char **strdir, char *slashpos);
 /*
 ** Free malloc
 */
@@ -107,6 +112,7 @@ void			free_ptrs(t_commands *table);
 void			free_table(t_commands *table, int index);
 int				free_parser_error(t_commands *table, int index, char **coms);
 void			free_all(void **buff, int len);
+void			free_array(char **str);
 /*
 ** Error
 */

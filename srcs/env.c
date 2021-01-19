@@ -6,11 +6,33 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 04:47:55 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 20:50:31 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/14 18:25:36 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	com_env(char **arg)
+{
+	int	i;
+
+	i = -1;
+	if (arg[1])
+	{
+		ft_putstr_fd("env: ", 2);
+		ft_putstr_fd(arg[1], 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
+		errno = 127;
+		return ;
+	}
+	while (tmp_env[++i])
+	{
+		ft_putstr(tmp_env[i]);
+		ft_putchar(10);
+	}
+	errno = 0;
+	return ;
+}
 
 /*
 ** Save_env will receive the arguments, It will save the env var in the correct position of the table.

@@ -6,11 +6,35 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:01:31 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 21:02:49 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/14 19:37:27 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int				quote_handler(char **arg, int i)
+{
+	char	*ptr;
+	int		ret;
+
+	ret = 1;
+	if ((ptr = non_zero_char(ft_strchr(arg[i], '"'),
+			ft_strchr(arg[i], '\''))) && !(ft_strchr(ptr + 1, *ptr)))
+		ret = input_minishell(arg + i, *ptr);
+	if (!ret)
+		return (0);
+	return (1);
+}
+
+int				envp_len(char **envp)
+{
+	int len;
+
+	len = -1;
+	while (envp[++len])
+		;
+	return (len);
+}
 
 void			count_redirection(char **arr, int *count)
 {

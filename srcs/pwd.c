@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freearray.c                                     :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 22:14:25 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/14 18:58:19 by vminomiy         ###   ########.fr       */
+/*   Created: 2021/01/18 20:18:20 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/01/18 20:22:03 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-char	**ft_freearray(char **array)
+void		com_pwd(char **arg)
 {
-	int	i;
+	char	buffer[4096 + 1];
 
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (NULL);
+	buffer[4096] = '\0';
+	(void)arg;
+	getcwd(buffer, 4096);
+	ft_putstr(buffer);
+	ft_putstr("\n");
+	errno = 0;
+	return ;
 }

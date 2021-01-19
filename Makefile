@@ -6,7 +6,7 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 20:45:56 by vminomiy          #+#    #+#              #
-#    Updated: 2020/12/03 22:11:13 by vminomiy         ###   ########.fr        #
+#    Updated: 2021/01/18 21:28:09 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC		=	$(DIR)/main.c			\
 			$(DIR)/utils.c			\
 			$(DIR)/utils2.c			\
 			$(DIR)/utils3.c			\
+			$(DIR)/utils4.c			\
 			$(DIR)/gnl.c			\
 			$(DIR)/env.c			\
 			$(DIR)/parser.c			\
@@ -47,7 +48,10 @@ SRC		=	$(DIR)/main.c			\
 			$(DIR)/files.c			\
 			$(DIR)/free.c			\
 			$(DIR)/echo.c			\
-			$(DIR)/exit.c
+			$(DIR)/exit.c			\
+			$(DIR)/export.c			\
+			$(DIR)/pwd.c			\
+			$(DIR)/unset.c
 			
 
 OBJ		=	$(patsubst %.c, %.o, ${SRC})

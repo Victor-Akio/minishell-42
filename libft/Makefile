@@ -6,7 +6,7 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 12:18:16 by hbuisser          #+#    #+#              #
-#    Updated: 2020/12/03 21:38:37 by vminomiy         ###   ########.fr        #
+#    Updated: 2021/01/14 20:36:22 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ft_arraylen.c get_next_line.c ft_memalloc.c ft_memdel.c ft_vcalloc.c \
 ft_intlen.c ft_isspace.c ft_freearray.c ft_iswall.c ft_addchar.c ft_addstr.c \
 ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 ft_lstadd_back_bonus.c ft_lstlast_bonus.c ft_lstclear_bonus.c \
-ft_lstdelone_bonus.c ft_lstiter_bonus.c ft_all_spaces.c
+ft_lstdelone_bonus.c ft_lstiter_bonus.c ft_all_spaces.c ft_findchar.c
 
 OBJECTS = $(SRCS:%.c=%.o)
 

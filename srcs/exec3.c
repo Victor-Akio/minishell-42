@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:29:01 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 22:17:59 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:46:47 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void			pick_com_exec(char **arr, t_commands *table)
 		&& (ft_arraylen(arr) == 1)))
 		com_exit();
 	else if (!(ft_strcmp(arr[0], "pwd")))
-		com_exit();
+		com_pwd(arr);
 	else if (!(ft_strcmp(arr[0], "export")) && (table->com_index == 1))
-		com_exit();
+		com_export(arr);
 	else if (!(ft_strcmp(arr[0], "unset")) && (table->com_index == 1))
-		com_exit();
+		com_unset(arr);
 	else if (!(ft_strcmp(arr[0], "env")))
-		com_exit();
+		com_env(arr);
 	else if (!(ft_strcmp(arr[0], "exit")))
 		com_exit();
 }

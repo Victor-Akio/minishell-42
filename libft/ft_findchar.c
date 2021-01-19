@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freearray.c                                     :+:      :+:    :+:   */
+/*   ft_findchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/25 22:14:25 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/14 18:58:19 by vminomiy         ###   ########.fr       */
+/*   Created: 2021/01/14 18:47:45 by vminomiy          #+#    #+#             */
+/*   Updated: 2021/01/14 18:49:01 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_freearray(char **array)
+int				ft_findchar(char *str, char c)
 {
-	int	i;
+	int i;
 
 	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
+	while (str[i] && str[i] != c)
 		i++;
-	}
-	free(array);
-	return (NULL);
+	if (str[i] == c)
+		return (i);
+	return (-1);
 }
