@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:30:57 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 17:50:55 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/19 20:02:05 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,21 +61,6 @@ static char		**no_arg(void)
 			}
 	}
 	return (ret);
-}
-
-void		export_no_arg(char **tmp)
-{
-	int i;
-
-	i = 0;
-	while (tmp[i])
-	{
-		write(1, "declare -x ", 11);
-		write(1, tmp[i], ft_strlen(tmp[i]));
-		write(1, "\n", 1);
-		i++;
-	}
-	free_array(tmp);
 }
 
 static void		rep_tmp_env2(char *str, char **tmp, int i, int j)

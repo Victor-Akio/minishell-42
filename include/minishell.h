@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 17:49:51 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/19 21:35:11 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void			com_env(char **arg);
 void			com_pwd(char **arg);
 void			com_unset(char **arg);
 void			com_export(char **arg);
+int				com_cd(char **arg);
 /*
 ** GNL
 */
@@ -104,7 +105,14 @@ int				envp_len(char **envp);
 int				input_minishell(char **input, char c);
 int				quote_handler(char **arg, int i);
 void			replace_var(char **dir, char *ptr);
+void			replace_env(t_commands *table);
 void			rm_backslash(char **strdir, char *slashpos);
+char			*set_env(char *arg);
+char			**set_pos(char *str);
+void			export_no_arg(char **tmp);
+int				read_subshell(char **input, char c);
+int				quot_parser(char **arg, int i);
+char			*env_selector(char *ev);
 /*
 ** Free malloc
 */

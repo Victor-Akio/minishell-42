@@ -6,13 +6,34 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 04:47:55 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/14 18:25:36 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/19 20:36:43 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	com_env(char **arg)
+char			*env_selector(char *ev)
+{
+	int			len;
+	char		*res;
+	int			i;
+
+	i = -1;
+	while (ev[++i] && (ev[i] != ' ') && (ev[i] != '\t') && (ev[i] != '\'')
+		&& (ev[i] != '"') && (ev[i] != '\n'))
+		;
+	len = i;
+	i = 0;
+	while (tmp_env[i] && ft_strncmp(ev, tmp_env[i], len) != 0)
+		i++;
+	if (!tmp_env[i] || tmp_env[i][len] != '=')
+		res = ft_strdup("");
+	else
+		res = ft_substr(tmp_env[i], len + 1, ft_strlen(tmp_env[i]));
+	return (res);
+}
+
+void			com_env(char **arg)
 {
 	int	i;
 
@@ -33,10 +54,6 @@ void	com_env(char **arg)
 	errno = 0;
 	return ;
 }
-
-/*
-** Save_env will receive the arguments, It will save the env var in the correct position of the table.
-*/
 
 void			save_env(int ac, char **av, char **ep)
 {

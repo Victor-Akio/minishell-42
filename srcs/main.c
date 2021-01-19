@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:58:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 21:53:19 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/19 21:21:12 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void		show_prompt(void)
 
 	dir_str[4096] = '\0';
 	getcwd(dir_str, 4096);
-	// ft_putstr("\033[?1049h\033[H");
 	write(1, dir_str, ft_strlen(dir_str));
 	write(1, " ", 1);
 	write(1, ">> ", 3);

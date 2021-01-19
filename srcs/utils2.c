@@ -6,11 +6,35 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:53:18 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 22:01:36 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/19 19:56:39 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char			**set_pos(char *str)
+{
+	char		*ptr;
+	char		**quotpos;
+
+	quotpos = malloc(sizeof(char *) * 1);
+	*quotpos = NULL;
+	while ((ptr = non_zero_char(ft_strchr(str, '"'), ft_strchr(str, '\''))))
+	{
+		if ((str = ft_strchr(ptr +1, *ptr)))
+		{
+			ft_addstr(&quotpos, ptr);
+			ft_addstr(&quotpos, str);
+			str++;
+		}
+		else
+		{
+			ft_addstr(&quotpos, ptr);
+			break;
+		}
+	}
+	return (quotpos);
+}
 
 char			*dup_symbol(char *str)
 {
