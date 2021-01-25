@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 01:46:50 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/11/26 20:50:47 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 19:34:41 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ void			sighandler(int sig)
 	if (sig == SIGINT)
 	{
 		write(1, "\n", 1);
-		//show_prompt();
+		show_prompt();
 		signal(SIGINT, sighandler);
-
 	}
 }
 

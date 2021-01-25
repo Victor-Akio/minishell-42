@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 19:37:59 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 19:56:01 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 19:24:27 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ void			rm_dummies(char **table)
 	i = 0;
 	while (table[i])
 	{
-		if ((quotpos[0] = non_zero_char(ft_strchr(table[i], '"'), ft_strchr(table[i], '\'')))
-			&& (quotpos[1] = ft_strchr(quotpos[0] + 1, *quotpos[0]))
-			&& ((quotpos[1] - quotpos[0]) == 1))
+		if ((quotpos[0] = non_zero_char(ft_strchr(table[i], '"'),
+			ft_strchr(table[i], '\''))) &&
+			(quotpos[1] = ft_strchr(quotpos[0] + 1, *quotpos[0])) &&
+			((quotpos[1] - quotpos[0]) == 1))
 		{
 			*quotpos[0] = '\0';
 			*quotpos[1] = '\0';
@@ -74,7 +75,7 @@ char			*non_zero_char(char *p1, char *p2)
 		return ((p1 < p2) ? p1 : p2);
 }
 
-int			input_minishell(char **input, char c)
+int				input_minishell(char **input, char c)
 {
 	char		buffer[1];
 	int			bytes;

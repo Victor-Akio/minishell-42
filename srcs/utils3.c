@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:01:31 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/14 19:37:27 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 19:33:24 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,16 @@ void			count_redirection(char **arr, int *count)
 	{
 		quotpos = set_pos(arr[i]);
 		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '<')) && (ptr[1] = ptr[0] + 1))
+		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '<')) &&
+			(ptr[1] = ptr[0] + 1))
 			count[0]++;
 		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '>')) && (ptr[0][1] != '>') && (ptr[1] = ptr[0] + 1))
+		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '>')) &&
+			(ptr[0][1] != '>') && (ptr[1] = ptr[0] + 1))
 			count[1]++;
 		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquot_aux(quotpos, ptr[1], '>')) && (ptr[1] = ptr[0] + 1))
+		while ((ptr[0] = ft_strquot_aux(quotpos, ptr[1], '>')) &&
+			(ptr[1] = ptr[0] + 1))
 			count[2]++;
 		free(quotpos);
 	}
@@ -70,7 +73,7 @@ int				check_empty_com(char **table, char **input)
 	{
 		if (((table[i][0] == '\0') || ft_all_spaces(table[i])) && (j != 1))
 		{
-			write (2, "ERROR - Syntax error.\n", 22);
+			write(2, "ERROR - Syntax error.\n", 22);
 			free(input);
 			*input = NULL;
 			free_all((void **)table, ft_arraylen(table));
@@ -89,7 +92,8 @@ char			*ft_strquot_aux(char **quotpos, char *str, char c)
 	i = -1;
 	while ((str[++i]) && (str[i + 1]))
 	{
-		if ((str[i] == c) && (str[i + 1] == c) && ((between_quot_pair(quotpos, str + i) != -1)
+		if ((str[i] == c) && (str[i + 1] == c) &&
+			((between_quot_pair(quotpos, str + i) != -1)
 			|| ((x % 2) && (str + i > quotpos[x - 1]))))
 			continue ;
 		else if ((str[i] == c) && (str[i + 1] == c))

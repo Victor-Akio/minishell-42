@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 20:33:33 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 21:32:48 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/25 19:56:39 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static void		str_update(char *p, char *s, char **d, char *quot)
 	tmp = ft_strdup(*d);
 	aux = ft_strjoin(tmp, s);
 	free(tmp);
-	while (*(p++) && (p[0] != ' ') && (p[0] != '\t') && (p[0] != '\n') && (p[0] != *quot))
+	while (*(p++) && (p[0] != ' ') && (p[0] != '\t') && (p[0] != '\n') &&
+		(p[0] != *quot))
 		;
 	tmp = ft_strjoin(aux, p);
 	free(s);
@@ -62,7 +63,7 @@ static void		str_update(char *p, char *s, char **d, char *quot)
 
 void			replace_var(char **dir, char *ptr)
 {
-	char 		*str;
+	char		*str;
 	char		*tmp;
 	char		*aux;
 

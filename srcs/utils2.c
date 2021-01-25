@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:53:18 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 19:56:39 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 18:28:18 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char			**set_pos(char *str)
 	*quotpos = NULL;
 	while ((ptr = non_zero_char(ft_strchr(str, '"'), ft_strchr(str, '\''))))
 	{
-		if ((str = ft_strchr(ptr +1, *ptr)))
+		if ((str = ft_strchr(ptr + 1, *ptr)))
 		{
 			ft_addstr(&quotpos, ptr);
 			ft_addstr(&quotpos, str);
@@ -30,7 +30,7 @@ char			**set_pos(char *str)
 		else
 		{
 			ft_addstr(&quotpos, ptr);
-			break;
+			break ;
 		}
 	}
 	return (quotpos);
@@ -46,7 +46,8 @@ char			*dup_symbol(char *str)
 	if (!str)
 		return (0);
 	quotpos = set_pos(str);
-	if ((ptr = non_zero_char(ft_strquots(quotpos, str, '>'), ft_strquots(quotpos, str, '<'))))
+	if ((ptr = non_zero_char(ft_strquots(quotpos, str, '>'),
+		ft_strquots(quotpos, str, '<'))))
 	{
 		tmp = *ptr;
 		*ptr = '\0';
@@ -90,7 +91,7 @@ int				set_redirection(t_commands *table, int *i)
 	char		**quotpos;
 
 	i[1] = -1;
-	while((str = table->coms[i[0]][++(*(i + 1))]))
+	while ((str = table->coms[i[0]][++(*(i + 1))]))
 	{
 		quotpos = set_pos(str);
 		ptr[0] = ft_strquots(quotpos, str, '<');
@@ -99,7 +100,8 @@ int				set_redirection(t_commands *table, int *i)
 		free(quotpos);
 		if ((ptr[0]) || (ptr[1]) || (ptr[2]))
 		{
-			if (((ft_strlen(str) == 1) && ((ptr[0]) || (ptr[1]))) || ((ft_strlen(str) == 2) && (ptr[2])))
+			if (((ft_strlen(str) == 1) && ((ptr[0]) || (ptr[1]))) ||
+				((ft_strlen(str) == 2) && (ptr[2])))
 				symbol_found(table, i, ptr);
 			else
 				word_redirection(table, i, ptr);
@@ -122,13 +124,16 @@ void			count_redirections(char **arr, int *count)
 	{
 		quotpos = set_pos(arr[i]);
 		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '<')) && (ptr[1] = ptr[0] + 1))
+		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '<')) &&
+			(ptr[1] = ptr[0] + 1))
 			count[0]++;
 		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '>')) && (ptr[0][1] != '>') && (ptr[1] = ptr[0] + 1))
+		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '>')) &&
+			(ptr[0][1] != '>') && (ptr[1] = ptr[0] + 1))
 			count[1]++;
 		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquot_aux(quotpos, ptr[1], '>')) && (ptr[1] = ptr[0] + 1))
+		while ((ptr[0] = ft_strquot_aux(quotpos, ptr[1], '>')) &&
+			(ptr[1] = ptr[0] + 1))
 			count[2]++;
 		free(quotpos);
 	}

@@ -6,11 +6,21 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:06:43 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 21:07:04 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/25 19:59:09 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_var			reset_count(void)
+{
+	t_var	var;
+
+	var.i = 0;
+	var.j = 0;
+	var.count = 0;
+	return (var);
+}
 
 void			init_redirection(t_commands *table, int *i, int *count)
 {

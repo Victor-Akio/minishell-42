@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:30:57 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 20:02:05 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 19:32:38 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static void		rep_tmp_env(char *str)
 	i = -1;
 	j = -1;
 	tmp = (char **)ft_calloc(envp_len(tmp_env) + count, sizeof(char *));
-	while(tmp_env[++i] && ft_strncmp("_=", tmp_env[i], 2) != 0)
+	while (tmp_env[++i] && ft_strncmp("_=", tmp_env[i], 2) != 0)
 		if (!(tmp[i] = ft_strdup(tmp_env[i])))
 			msh_exit();
 	rep_tmp_env2(str, tmp, i, j);
@@ -115,7 +115,7 @@ static void		rep_tmp_env(char *str)
 void			com_export(char **arg)
 {
 	int		i;
-	
+
 	i = 0;
 	errno = 0;
 	if (!arg[1])

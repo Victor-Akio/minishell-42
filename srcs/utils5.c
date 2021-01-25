@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:57:53 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 21:15:58 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 19:31:08 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int				quot_parser(char **arg, int i)
 	int			ret;
 
 	ret = 1;
-	if ((ptr = non_zero_char(ft_strchr(arg[i], '"'), ft_strchr(arg[i], '\''))) && !(ft_strchr(ptr + 1, *ptr)))
+	if ((ptr = non_zero_char(ft_strchr(arg[i], '"'), ft_strchr(arg[i], '\'')))
+		&& !(ft_strchr(ptr + 1, *ptr)))
 		ret = read_subshell(arg + i, *ptr);
 	if (!ret)
 		return (0);
@@ -27,7 +28,7 @@ int				quot_parser(char **arg, int i)
 
 char			*ft_ignorechar(char **line, char c)
 {
-	while(**line == c)
+	while (**line == c)
 		(*line)++;
 	return (*line);
 }
@@ -60,9 +61,9 @@ char			*ft_strquots(char **quotpos, char *str, char c)
 	i = -1;
 	while (str[++i])
 	{
-		if ((between_quot_pair(quotpos, str + i) != -1)
-			&& ((j % 2) && (str + i > quotpos[j -1])))
-			continue;
+		if ((between_quot_pair(quotpos, str + i) != -1) &&
+			((j % 2) && (str + i > quotpos[j - 1])))
+			continue ;
 		else if (str[i] == c)
 			return (str + i);
 	}

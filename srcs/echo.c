@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:42:53 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 21:15:58 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 18:36:26 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int				read_subshell(char **input, char c)
 		if (((tmp - *input) != 0) && (tmp[-1] == '\\'))
 			rm_backslash(input, tmp - 1);
 		else
-			replace_var(input, tmp -1);
+			replace_var(input, tmp - 1);
 	}
 	return (bytes);
 }

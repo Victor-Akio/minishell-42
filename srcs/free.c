@@ -6,14 +6,14 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:30:27 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/14 19:00:07 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 19:35:05 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-** free_all will do the free job throught the program 
+** free_all will do the free job throught the program
 */
 
 void			free_array(char **str)
@@ -79,7 +79,7 @@ void			free_ptrs(t_commands *table)
 
 void			free_table(t_commands *table, int index)
 {
-	int 		i;
+	int			i;
 	int			j;
 
 	i = -1;
@@ -88,11 +88,16 @@ void			free_table(t_commands *table, int index)
 		j = -1;
 		while (++j < table[i].com_index)
 		{
-			free_all((void **)table[i].coms[j], ft_arraylen(table[i].coms[j]));
-			free_all((void **)table[i].i_files[j], ft_arraylen(table[i].i_files[j]));
-			free_all((void **)table[i].o_files[j], ft_arraylen(table[i].o_files[j]));
-			free_all((void **)table[i].ap_files[j], ft_arraylen(table[i].ap_files[j]));
-			free_all((void **)table[i].d_files[j], ft_arraylen(table[i].d_files[j]));
+			free_all((void **)table[i].coms[j],
+				ft_arraylen(table[i].coms[j]));
+			free_all((void **)table[i].i_files[j],
+				ft_arraylen(table[i].i_files[j]));
+			free_all((void **)table[i].o_files[j],
+				ft_arraylen(table[i].o_files[j]));
+			free_all((void **)table[i].ap_files[j],
+				ft_arraylen(table[i].ap_files[j]));
+			free_all((void **)table[i].d_files[j],
+				ft_arraylen(table[i].d_files[j]));
 		}
 		free_ptrs(table + i);
 	}

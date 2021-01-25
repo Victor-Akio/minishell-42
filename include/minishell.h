@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 21:35:11 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/25 19:53:18 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ typedef struct	s_commands
 	int		index;
 }				t_commands;
 
-typedef struct	s_xy
+typedef struct	s_var
 {
-	int		x;
-	int		y;
-}				t_xy;
+	int		count;
+	int		i;
+	int		j;
+}				t_var;
 /*
 ** Functions
 */
@@ -113,6 +114,8 @@ void			export_no_arg(char **tmp);
 int				read_subshell(char **input, char c);
 int				quot_parser(char **arg, int i);
 char			*env_selector(char *ev);
+t_var			reset_count(void);
+void			show_prompt(void);
 /*
 ** Free malloc
 */

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:01:58 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 20:31:51 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 17:26:09 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ static void		redirect_output(t_commands *table, int *i, int *fd, int *pp)
 	int			x;
 
 	x = table->com_index - 1;
-	if ((i[1] == x) && !(table->o_files[i[1]][0]) && !(table->ap_files[i[1]][0]))
+	if ((i[1] == x) && !(table->o_files[i[1]][0]) &&
+		!(table->ap_files[i[1]][0]))
 		fd[3] = dup(fd[1]);
 	else if ((i[1] == x) && (table->ap_files[i[1]][0]))
-		fd[3] = open(table->ap_files[i[1]][0], O_CREAT | O_WRONLY | O_APPEND, S_IWUSR | S_IRUSR);
+		fd[3] = open(table->ap_files[i[1]][0], O_CREAT | O_WRONLY |
+			O_APPEND, S_IWUSR | S_IRUSR);
 	else if ((i[1] == x) && (table->o_files[i[1]][0]))
-		fd[3] = open(table->o_files[i[1]][0], O_CREAT | O_WRONLY | O_APPEND, S_IWUSR | S_IRUSR);
+		fd[3] = open(table->o_files[i[1]][0], O_CREAT | O_WRONLY |
+			O_APPEND, S_IWUSR | S_IRUSR);
 	else if (i[1] == x)
 	{
 		pipe(pp);

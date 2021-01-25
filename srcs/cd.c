@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:30:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 19:22:30 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/20 17:27:35 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char			*set_env(char *arg)
 	char	*res;
 
 	i = -1;
-	while (arg[++i] && (arg[i] != ' ') && (arg[i] != '\t') && (arg[i] != '\'') &&
-		(arg[i] != '"') && (arg[i] != '\n'))
+	while (arg[++i] && (arg[i] != ' ') && (arg[i] != '\t') &&
+		(arg[i] != '\'') && (arg[i] != '"') && (arg[i] != '\n'))
 		;
 	len = i;
 	i = 0;

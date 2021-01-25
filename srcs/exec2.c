@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:23:01 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 20:24:39 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/25 19:54:59 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char			*env_handler(char *ev)
 	int			i;
 
 	i = -1;
-	while (ev[++i] && (ev[i] != ' ') && (ev[i] != '\t') && (ev[i] != '\'') && (ev[i] != '"') && (ev[i]  != '\n'))
+	while (ev[++i] && (ev[i] != ' ') && (ev[i] != '\t') &&
+		(ev[i] != '\'') && (ev[i] != '"') && (ev[i] != '\n'))
 		;
 	len = i;
 	i = 0;
@@ -36,33 +37,28 @@ char			**save_syspath(void)
 {
 	char		*tmp;
 	char		**path;
-	int			count;
-	int			i;
-	int			j;
+	t_var		var;
 
-	count = 0;
-	i = 0;
-	j = 0;
+	var = reset_count();
 	tmp = env_handler("PATH");
 	if (tmp[ft_strlen(tmp) - 1] != ':')
 		tmp = ft_addchar(tmp, ':');
-	while (tmp[++i])
-		if (tmp[i] == ':')
-			j++;
-	path = (char **)ft_calloc(j + 1, sizeof(char *));
-	i = 0;
-	j = 0;
-	while (tmp[++i])
+	while (tmp[++var.i])
+		if (tmp[var.i] == ':')
+			var.j++;
+	path = (char **)ft_calloc(var.j + 1, sizeof(char *));
+	reset_count();
+	while (tmp[++var.i])
 	{
-		if (tmp[i] == ':')
+		if (tmp[var.i] == ':')
 		{
-			path[count] = ft_substr(tmp, j, i - j + 1);
-			path[count++][i - j] = '/';
-			j = i + 1;
+			path[var.count] = ft_substr(tmp, var.j, var.i - var.j + 1);
+			path[var.count++][var.i - var.j] = '/';
+			var.j = var.i + 1;
 		}
 	}
 	free(tmp);
-	return (path);	
+	return (path);
 }
 
 int				sys_path(char **arr)
@@ -73,7 +69,7 @@ int				sys_path(char **arr)
 	int			i;
 
 	path = save_syspath();
-	i =  -1;
+	i = -1;
 	while (path[++i])
 	{
 		tmp = ft_strjoin(path[i], *arr);
@@ -102,8 +98,9 @@ int				exec_pathfinder(char **arr)
 		return (1);
 	if (*(*arr) == '.')
 	{
-		if (((*(*arr + 1) == '.') && (*(*arr + 2) == '/')) || (*(*arr + 1) == '/'))
-			return (1); 
+		if (((*(*arr + 1) == '.') && (*(*arr + 2) == '/')) ||
+			(*(*arr + 1) == '/'))
+			return (1);
 		return (0);
 	}
 	else if ((*(*arr) == '~') && (*(*arr + 1) == '/'))

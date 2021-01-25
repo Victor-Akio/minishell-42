@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:54:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/19 21:19:15 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/25 20:36:49 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int		find_redirection(t_commands *table)
 		if (!(table->coms[i[0]]))
 			continue ;
 		count[0] = 0;
-		count[1] = 1;
+		count[1] = 0;
 		count[2] = 0;
 		count_redirections(table->coms[i[0]], count);
 		init_redirection(table, i, count);
@@ -101,7 +101,7 @@ int				tolken_gen(char **coms, t_commands *table, int size)
 		pick_coms(table + i, coms[i]);
 		if (find_redirection(table + i))
 			return (free_parser_error(table, i, coms));
-		rep_env(table + i);
+		replace_env(table + i);
 		j = -1;
 		while (table[i].coms[++j])
 		{
