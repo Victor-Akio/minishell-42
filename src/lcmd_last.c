@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   msh_read.c                                         :+:      :+:    :+:   */
+/*   lcmd_last.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 00:34:50 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/30 17:54:41 by jaqrodri         ###   ########.fr       */
+/*   Created: 2020/11/30 15:39:31 by jaqrodri          #+#    #+#             */
+/*   Updated: 2020/11/30 15:54:31 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*msh_read(t_msh *msh)
+t_lstcmds	*lcmd_last(t_lstcmds *lst)
 {
-	if (!(msh->cmd_line = ft_strdup("")))
+	if (lst == NULL)
 		return (NULL);
-	if (get_next_line(STDIN_FILENO, &msh->cmd_line) == -1)
-		return(NULL);
-	// printf("%s\n", msh->cmd_line);
-	return (msh->cmd_line);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

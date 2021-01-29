@@ -6,11 +6,11 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 01:32:21 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/19 01:34:12 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/30 01:45:26 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+#include "minishell.h"
 
 void	ft_strdel(char **str)
 {

@@ -6,7 +6,7 @@
 #    By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/02 00:38:44 by jaqrodri          #+#    #+#              #
-#    Updated: 2020/11/27 17:08:45 by jaqrodri         ###   ########.fr        #
+#    Updated: 2020/11/30 18:35:23 by jaqrodri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,13 +30,20 @@ LD_FLAGS =	-L${LIBFT_DIR}	\
 			-lft 
 
 SRC_DIR = ./src
-SRC =	${SRC_DIR}/main.c \
-		${SRC_DIR}/ft_strdel.c \
-		${SRC_DIR}/ft_isspace.c \
-		${SRC_DIR}/ft_ignorechar.c \
-		${SRC_DIR}/parser_echo.c \
-		${SRC_DIR}/msh_parser.c \
-		${SRC_DIR}/msh_read.c 
+SRC =	${SRC_DIR}/main.c				\
+		${SRC_DIR}/ft_strdel.c			\
+		${SRC_DIR}/ft_isspace.c			\
+		${SRC_DIR}/ft_arraylen.c		\
+		${SRC_DIR}/ft_ignorechar.c		\
+		${SRC_DIR}/lcmd_new.c			\
+		${SRC_DIR}/lcmd_last.c			\
+		${SRC_DIR}/parser_echo.c		\
+		${SRC_DIR}/parser_env.c			\
+		${SRC_DIR}/msh_isseparator.c	\
+		${SRC_DIR}/msh_parser.c			\
+		${SRC_DIR}/msh_read.c			\
+		${SRC_DIR}/msh_exit.c			\
+		${SRC_DIR}/msh_env.c
 
 OBJ_DIR	=	./objects
 OBJ		=	$(patsubst ${SRC_DIR}/%.c, ${OBJ_DIR}/%.o, ${SRC})

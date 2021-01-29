@@ -6,11 +6,11 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:28:35 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/27 06:22:11 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/30 01:45:30 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+#include "minishell.h"
 
 int	parser_echo(char **line)
 {

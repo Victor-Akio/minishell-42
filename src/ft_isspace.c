@@ -6,11 +6,11 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 17:25:01 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/26 17:26:15 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/11/30 01:45:25 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+#include "minishell.h"
 
 int		ft_isspace(char c)
 {

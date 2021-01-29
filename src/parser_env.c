@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   msh_read.c                                         :+:      :+:    :+:   */
+/*   parser_env.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 00:34:50 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/30 17:54:41 by jaqrodri         ###   ########.fr       */
+/*   Created: 2020/11/26 17:28:35 by jaqrodri          #+#    #+#             */
+/*   Updated: 2020/12/08 17:47:29 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*msh_read(t_msh *msh)
+char	*msh_getword(char **line)
 {
-	if (!(msh->cmd_line = ft_strdup("")))
-		return (NULL);
-	if (get_next_line(STDIN_FILENO, &msh->cmd_line) == -1)
-		return(NULL);
-	// printf("%s\n", msh->cmd_line);
-	return (msh->cmd_line);
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	while (!msh_isseparator(line[0][i]))
+		i++;
+	if (*line)
+	{
+		tmp = ft_substr(*line, 0, i);
+		*line += i;
+	}
+	return (tmp);
+}
+
+int			parser_env(char **line, t_msh *msh)
+{
+	char	*cmd;
+	char	*data;
+	
+	cmd = msh_getword(line);
+	ft_ignorechar(line, ' ');
+	data = msh_getword(line);
+	msh->cmds = lcmd_new(msh->cmds, cmd, data, 0, 1);
+	return ();
 }

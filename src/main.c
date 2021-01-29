@@ -6,11 +6,11 @@
 /*   By: jaqrodri <jaqrodri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 21:39:25 by jaqrodri          #+#    #+#             */
-/*   Updated: 2020/11/26 17:38:35 by jaqrodri         ###   ########.fr       */
+/*   Updated: 2020/12/08 17:49:45 by jaqrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_minishell.h"
+#include "minishell.h"
 
 static void	render_hader()
 {
@@ -28,24 +28,32 @@ _| |____     | |/ /_\n", 1);
 _|______|    |_|____|\n\n", 1);
 }
 
-int			msh_prompt()
+int			msh_prompt(t_msh *msh)
 {
 	render_hader();
 	while (1)
 	{
-		t_msh	msh;
+		msh->path = getcwd(NULL, 0);
 		ft_putstr_fd(" >> ", 1);
-		if (!(msh.command = msh_read(&msh)))
+		if (!(msh->cmd_line = msh_read(msh)))
 			return (-1);
-		if (msh_parser(&msh) < 0)
-			return (0);
+		// if (msh_parser(msh) < 0)
+			// return (0);
+		msh_parser(msh);
+		// if (msh_run(msh) < 0)
+		// 	return (0);
 	}
 }
 
-int 		main()//int argc, char **argv)
+int 		main(int argc, char *argv[], char **envv)
 {
-
-	msh_prompt();
+	t_msh		msh;
+	
+	(void)argc;
+	(void)argv;
+	msh.cmds = NULL;
+	save_env(&msh, envv);
+	msh_prompt(&msh);
 
 	return EXIT_SUCCESS;
 }
