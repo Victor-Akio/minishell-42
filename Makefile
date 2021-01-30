@@ -6,7 +6,7 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 20:45:56 by vminomiy          #+#    #+#              #
-#    Updated: 2021/01/19 21:14:39 by vminomiy         ###   ########.fr        #
+#    Updated: 2021/01/30 05:28:03 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,6 @@ SRC		=	$(DIR)/main.c			\
 			$(DIR)/unset.c			\
 			$(DIR)/cd.c
 			
-
 OBJ		=	$(patsubst %.c, %.o, ${SRC})
 
 all		:	$(NAME)

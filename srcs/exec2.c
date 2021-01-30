@@ -6,32 +6,11 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:23:01 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/25 19:54:59 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 05:38:24 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char			*env_handler(char *ev)
-{
-	int			len;
-	char		*res;
-	int			i;
-
-	i = -1;
-	while (ev[++i] && (ev[i] != ' ') && (ev[i] != '\t') &&
-		(ev[i] != '\'') && (ev[i] != '"') && (ev[i] != '\n'))
-		;
-	len = i;
-	i = 0;
-	while (tmp_env[i] && ft_strncmp(ev, tmp_env[i], len) != 0)
-		i++;
-	if (!tmp_env[i] || tmp_env[i][len] != '=')
-		res = ft_strdup("");
-	else
-		res = ft_substr(tmp_env[i], len + 1, ft_strlen(tmp_env[i]));
-	return (res);
-}
 
 char			**save_syspath(void)
 {
@@ -40,7 +19,7 @@ char			**save_syspath(void)
 	t_var		var;
 
 	var = reset_count();
-	tmp = env_handler("PATH");
+	tmp = env_selector("PATH");
 	if (tmp[ft_strlen(tmp) - 1] != ':')
 		tmp = ft_addchar(tmp, ':');
 	while (tmp[++var.i])
@@ -105,7 +84,7 @@ int				exec_pathfinder(char **arr)
 	}
 	else if ((*(*arr) == '~') && (*(*arr + 1) == '/'))
 	{
-		tmp[0] = env_handler("HOME");
+		tmp[0] = env_selector("HOME");
 		tmp[1] = ft_strjoin(tmp[0], *arr + 1);
 		free(tmp[0]);
 		*arr = tmp[1];

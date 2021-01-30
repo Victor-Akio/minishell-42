@@ -6,13 +6,13 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 20:47:28 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 19:27:13 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 05:16:47 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char			*find_non_zero_char(char **ptr)
+static char		*find_non_zero_char(char **ptr)
 {
 	char		*tmp[1];
 
@@ -38,7 +38,7 @@ char			*find_non_zero_char(char **ptr)
 	return (*tmp);
 }
 
-void			symbol_found(t_commands *table, int *i, char **ptr)
+static void		symbol_found(t_commands *table, int *i, char **ptr)
 {
 	char		*p1;
 	int			x;
@@ -60,7 +60,7 @@ void			symbol_found(t_commands *table, int *i, char **ptr)
 	resize_arr_pos(&table->coms[i[0]], i[1]);
 }
 
-void			word_symbol(t_commands *table, int *i, char *str, int t)
+static void		word_symbol(t_commands *table, int *i, char *str, int t)
 {
 	int			len;
 
@@ -78,7 +78,7 @@ void			word_symbol(t_commands *table, int *i, char *str, int t)
 	}
 }
 
-void			word_redirection(t_commands *table, int *i, char **ptr)
+static void		word_redirection(t_commands *table, int *i, char **ptr)
 {
 	char		*p1;
 	int			x;
@@ -105,4 +105,33 @@ void			word_redirection(t_commands *table, int *i, char **ptr)
 		if (!(table->coms[i[0]][i[1]][0]))
 			resize_arr_pos(&table->coms[i[0]], i[1]);
 	}
+}
+
+int				set_redirection(t_commands *table, int *i)
+{
+	char		*str;
+	char		*ptr[3];
+	char		**quotpos;
+
+	i[1] = -1;
+	while ((str = table->coms[i[0]][++(*(i + 1))]))
+	{
+		quotpos = set_pos(str);
+		ptr[0] = ft_strquotsbase(quotpos, str, '<');
+		ptr[1] = ft_strquots(quotpos, str, '>');
+		ptr[2] = ft_strquots(quotpos, str, '>');
+		free(quotpos);
+		if ((ptr[0]) || (ptr[1]) || (ptr[2]))
+		{
+			if (((ft_strlen(str) == 1) && ((ptr[0]) || (ptr[1]))) ||
+				((ft_strlen(str) == 2) && (ptr[2])))
+				symbol_found(table, i, ptr);
+			else
+				word_redirection(table, i, ptr);
+			if ((parser_error(table, i[0])))
+				return (1);
+			i[1] = -1;
+		}
+	}
+	return (0);
 }

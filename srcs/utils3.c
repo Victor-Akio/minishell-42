@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:01:31 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 19:33:24 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 01:00:39 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,6 @@ int				envp_len(char **envp)
 	while (envp[++len])
 		;
 	return (len);
-}
-
-void			count_redirection(char **arr, int *count)
-{
-	int			i;
-	char		**quotpos;
-	char		*ptr[2];
-
-	i = -1;
-	while (arr[++i])
-	{
-		quotpos = set_pos(arr[i]);
-		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '<')) &&
-			(ptr[1] = ptr[0] + 1))
-			count[0]++;
-		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquots(quotpos, ptr[1], '>')) &&
-			(ptr[0][1] != '>') && (ptr[1] = ptr[0] + 1))
-			count[1]++;
-		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquot_aux(quotpos, ptr[1], '>')) &&
-			(ptr[1] = ptr[0] + 1))
-			count[2]++;
-		free(quotpos);
-	}
 }
 
 int				check_empty_com(char **table, char **input)

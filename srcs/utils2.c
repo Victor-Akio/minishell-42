@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:53:18 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 18:28:18 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 04:59:27 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,35 +82,6 @@ void			resize_arr_pos(char ***arr, int pos)
 	}
 	free_all((void **)*arr, size);
 	*arr = tmp;
-}
-
-int				set_redirection(t_commands *table, int *i)
-{
-	char		*str;
-	char		*ptr[3];
-	char		**quotpos;
-
-	i[1] = -1;
-	while ((str = table->coms[i[0]][++(*(i + 1))]))
-	{
-		quotpos = set_pos(str);
-		ptr[0] = ft_strquots(quotpos, str, '<');
-		ptr[1] = ft_strquots(quotpos, str, '>');
-		ptr[2] = ft_strquots(quotpos, str, '>');
-		free(quotpos);
-		if ((ptr[0]) || (ptr[1]) || (ptr[2]))
-		{
-			if (((ft_strlen(str) == 1) && ((ptr[0]) || (ptr[1]))) ||
-				((ft_strlen(str) == 2) && (ptr[2])))
-				symbol_found(table, i, ptr);
-			else
-				word_redirection(table, i, ptr);
-			if ((parser_error(table, i[0])))
-				return (1);
-			i[1] = -1;
-		}
-	}
-	return (0);
 }
 
 void			count_redirections(char **arr, int *count)

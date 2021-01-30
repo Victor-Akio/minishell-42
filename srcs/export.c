@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:30:57 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 19:32:38 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/28 19:14:41 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ void			com_export(char **arg)
 		if (!quote_handler(arg, i))
 			return ;
 		rm_quotes(arg + i);
-		if (arg[i][0] == '=' || ft_strchr(arg[i], 10))
+		if (arg[i][0] == '=' || ft_strchr(arg[i], '\n'))
 		{
 			ft_putstr_fd("export: '", 2);
 			ft_putstr_fd(arg[i], 2);

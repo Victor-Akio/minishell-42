@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/25 19:53:18 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 05:28:34 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,6 @@ void			read_input(char **input);
 */
 int				tolken_gen(char **coms, t_commands *table, int size);
 void			init_redirection(t_commands *table, int *i, int *count);
-void			word_redirection(t_commands *table, int *i, char **ptr);
-void			word_symbol(t_commands *table, int *i, char *str, int t);
-void			symbol_found(t_commands *table, int *i, char **ptr);
-char			*find_non_zero_char(char **ptr);
 /*
 ** Executor
 */
@@ -89,6 +85,7 @@ void			count_redirections(char **arr, int *count);
 void			save_env(int ac, char **av, char **ep);
 char			**split_quots(char *str, char c);
 char			**rm_empty_str(char **arr);
+char			*ft_strquotsbase(char **quotpos, char *str, char c);
 char			*ft_strquots(char **quotpos, char *str, char c);
 char			*ft_strquot_aux(char **quotpos, char *str, char c);
 int				count_unquoted(char **quotpos, char *str, char c);
@@ -112,7 +109,6 @@ char			*set_env(char *arg);
 char			**set_pos(char *str);
 void			export_no_arg(char **tmp);
 int				read_subshell(char **input, char c);
-int				quot_parser(char **arg, int i);
 char			*env_selector(char *ev);
 t_var			reset_count(void);
 void			show_prompt(void);
