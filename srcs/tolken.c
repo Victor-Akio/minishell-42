@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:54:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/25 20:36:49 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 17:18:33 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@ static void		rm_quotes_coms(t_commands *table)
 	while (table->coms[++i])
 		rm_quotes(&table->coms[i][0]);
 }
-
-/*
-** find and set the coms in the com_table
-*/
 
 static void		pick_coms(t_commands *table, char *coms)
 {
@@ -84,11 +80,6 @@ static int		find_redirection(t_commands *table)
 	}
 	return (0);
 }
-
-/*
-** Parser the com received to several com table.
-** One for each ;
-*/
 
 int				tolken_gen(char **coms, t_commands *table, int size)
 {

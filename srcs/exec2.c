@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:23:01 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/30 05:38:24 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 17:13:09 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ void			launch_exec(char **arr)
 	{
 		if ((execve(arr[0], arr, tmp_env) < 0))
 		{
-			write(2, "ERROR - EOF while looking for matching quote\n", 42);
+			ft_putstr_fd(strerror(errno), 2);
+			ft_putchar_fd('\n', 2);
 			exit(1);
 		}
 		else

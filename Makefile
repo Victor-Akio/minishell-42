@@ -6,7 +6,7 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/04 20:45:56 by vminomiy          #+#    #+#              #
-#    Updated: 2021/01/30 05:28:03 by vminomiy         ###   ########.fr        #
+#    Updated: 2021/01/30 19:06:13 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ SRC		=	$(DIR)/main.c			\
 			$(DIR)/utils4.c			\
 			$(DIR)/utils5.c			\
 			$(DIR)/utils6.c			\
-			$(DIR)/gnl.c			\
 			$(DIR)/env.c			\
 			$(DIR)/parser.c			\
 			$(DIR)/exec.c			\

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:01:31 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/30 01:00:39 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 17:19:04 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,19 @@ char			*ft_strquot_aux(char **quotpos, char *str, char c)
 			return (str + i + 1);
 	}
 	return (0);
+}
+
+void			read_input(char **input)
+{
+	char		buff[1];
+	int			bytes;
+
+	while ((bytes = read(0, buff, 1)) && buff[0] != '\n')
+		*input = ft_addchar(*input, buff[0]);
+	*input = ft_addchar(*input, '\0');
+	if (!bytes)
+	{
+		free(*input);
+		msh_exit();
+	}
 }

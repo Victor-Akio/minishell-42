@@ -6,15 +6,11 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 01:46:50 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 19:34:41 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 17:18:36 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-/*
-** Sighandler will be the parent handler
-*/
 
 void			sighandler(int sig)
 {
@@ -25,10 +21,6 @@ void			sighandler(int sig)
 		signal(SIGINT, sighandler);
 	}
 }
-
-/*
-** Sighandler C is the children handler.
-*/
 
 void			sighandler_c(int sig)
 {

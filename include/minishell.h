@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/30 05:28:34 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 16:51:14 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void			init_redirection(t_commands *table, int *i, int *count);
 */
 int				coms_handler(char **arr);
 void			pick_com_exec(char **arr, t_commands *table);
-char			*env_handler(char *ev);
 char			**save_syspath(void);
 int				sys_path(char **arr);
 int				exec_pathfinder(char **arr);

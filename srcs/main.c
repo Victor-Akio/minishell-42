@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:58:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 19:31:44 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 17:18:47 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ static int	check_empty_com(char **table, char **input)
 	}
 	return (0);
 }
-
-/*
-** Show_promtp is responsible to clear the terminal and show the ">>"
-** that means prompt is ready to receive the input.
-*/
 
 void		show_prompt(void)
 {
