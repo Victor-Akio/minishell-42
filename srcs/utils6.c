@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 20:33:33 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/25 19:56:39 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 00:07:15 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void			replace_env(t_commands *table)
 	while (table->coms[++i])
 	{
 		j = -1;
-		while (table->coms[++j])
+		while (table->coms[i][++j])
 		{
 			if ((tmp = ft_strchr(table->coms[i][j], '$')))
 			{

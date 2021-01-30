@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/30 16:51:14 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/30 23:38:34 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 # include <errno.h>
 # include <limits.h>
 # include "../libft/libft.h"
-
-# include <stdio.h> //DELETAAAAAAAAAR
 
 char	**tmp_env;
 
