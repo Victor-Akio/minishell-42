@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 20:31:04 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 17:32:44 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 02:31:49 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int		unset_parser(char *arg)
 		return (0);
 	}
 	i = -1;
-	while (tmp_env[++i])
-		if (ft_strncmp(arg, tmp_env[i], len) == 0)
+	while (g_env[++i])
+		if (ft_strncmp(arg, g_env[i], len) == 0)
 			return (1);
 	return (0);
 }
 
-static void		clear_tmp_env(char *arg)
+static void		clear_g_env(char *arg)
 {
 	char	**tmp;
 	char	**buffer;
@@ -42,13 +42,13 @@ static void		clear_tmp_env(char *arg)
 
 	i = -1;
 	j = -1;
-	tmp = (char **)ft_calloc(envp_len(tmp_env), sizeof(char *));
-	while (tmp_env[++i])
-		if (ft_strncmp(arg, tmp_env[i], ft_findchar(tmp_env[i], '=')) != 0)
-			if (!(tmp[++j] = ft_strdup(tmp_env[i])))
+	tmp = (char **)ft_calloc(envp_len(g_env), sizeof(char *));
+	while (g_env[++i])
+		if (ft_strncmp(arg, g_env[i], ft_findchar(g_env[i], '=')) != 0)
+			if (!(tmp[++j] = ft_strdup(g_env[i])))
 				msh_exit();
-	buffer = tmp_env;
-	tmp_env = tmp;
+	buffer = g_env;
+	g_env = tmp;
 	free_array(buffer);
 	return ;
 }
@@ -65,7 +65,7 @@ void			com_unset(char **arg)
 			return ;
 		rm_quotes(arg + i);
 		if (unset_parser(arg[i]))
-			clear_tmp_env(arg[i]);
+			clear_g_env(arg[i]);
 	}
 	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/30 23:38:34 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 02:26:36 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <limits.h>
 # include "../libft/libft.h"
 
-char	**tmp_env;
+char		**g_env;
 
 typedef struct	s_commands
 {
@@ -95,7 +95,8 @@ char			*dup_symbol(char *str);
 void			resize_arr_pos(char ***arr, int pos);
 int				set_redirection(t_commands *table, int *i);
 void			count_redirections(char **arr, int *count);
-void			redir_files_updt(t_commands *table, int *i, char *str, int index);
+void			redir_files_updt(t_commands *table, int *i, char *str,
+					int index);
 int				envp_len(char **envp);
 int				input_minishell(char **input, char c);
 int				quote_handler(char **arg, int i);

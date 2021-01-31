@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:30:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 17:27:35 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 02:26:30 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ char			*set_env(char *arg)
 		;
 	len = i;
 	i = 0;
-	while (tmp_env[i] && ft_strncmp(arg, tmp_env[i], len) != 0)
+	while (g_env[i] && ft_strncmp(arg, g_env[i], len) != 0)
 		i++;
-	if (!tmp_env[i] || tmp_env[i][len] != '=')
+	if (!g_env[i] || g_env[i][len] != '=')
 		res = ft_strdup("");
 	else
-		res = ft_substr(tmp_env[i], len + 1, ft_strlen(tmp_env[i]));
+		res = ft_substr(g_env[i], len + 1, ft_strlen(g_env[i]));
 	return (res);
 }
 

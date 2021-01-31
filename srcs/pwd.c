@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 20:18:20 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/29 23:26:02 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 02:21:38 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void		com_pwd(char **arg)
 {
 	char	buffer[4096 + 1];
+
 	buffer[4096] = '\0';
 	(void)arg;
 	getcwd(buffer, 4096);

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:46:03 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 18:28:28 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 02:28:58 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void			msh_exit(void)
 	int			i;
 
 	i = 0;
-	while (tmp_env[i])
-		free(tmp_env[i++]);
-	free(tmp_env);
+	while (g_env[i])
+		free(g_env[i++]);
+	free(g_env);
 	exit(0);
 }

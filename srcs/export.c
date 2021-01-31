@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 18:30:57 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/28 19:14:41 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 02:29:40 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static char		**no_arg(void)
 	int		j;
 
 	i = -1;
-	ret = (char **)ft_calloc(envp_len(tmp_env), sizeof(char *));
-	while (tmp_env[++i] && ft_strncmp("_=", tmp_env[i], 2) != 0)
-		ret[i] = new_arg(tmp_env[i]);
+	ret = (char **)ft_calloc(envp_len(g_env), sizeof(char *));
+	while (g_env[++i] && ft_strncmp("_=", g_env[i], 2) != 0)
+		ret[i] = new_arg(g_env[i]);
 	i = -1;
 	while (ret[++i])
 	{
@@ -63,31 +63,31 @@ static char		**no_arg(void)
 	return (ret);
 }
 
-static void		rep_tmp_env2(char *str, char **tmp, int i, int j)
+static void		rep_g_env2(char *str, char **tmp, int i, int j)
 {
 	int		count;
 
 	count = 0;
-	while (tmp_env[++j])
-		if (ft_strncmp(str, tmp_env[j], ft_findchar(str, '=') + 1))
+	while (g_env[++j])
+		if (ft_strncmp(str, g_env[j], ft_findchar(str, '=') + 1))
 		{
 			if (!(tmp[j] = ft_strdup(str)))
 				msh_exit();
 			count = 1;
 			break ;
 		}
-	if (!tmp_env[j])
+	if (!g_env[j])
 		if (!(tmp[i] = ft_strdup(str)))
 			msh_exit();
-	while (tmp_env[i++])
+	while (g_env[i++])
 	{
-		if (!(tmp[i - count] = ft_strdup(tmp_env[i - 1])))
+		if (!(tmp[i - count] = ft_strdup(g_env[i - 1])))
 			msh_exit();
 	}
 	return ;
 }
 
-static void		rep_tmp_env(char *str)
+static void		rep_g_env(char *str)
 {
 	char	**tmp;
 	char	**buffer;
@@ -97,18 +97,18 @@ static void		rep_tmp_env(char *str)
 
 	count = 2;
 	i = -1;
-	while (tmp_env[++i])
-		if (ft_strncmp(str, tmp_env[i], ft_findchar(str, '=') + 1))
+	while (g_env[++i])
+		if (ft_strncmp(str, g_env[i], ft_findchar(str, '=') + 1))
 			count = 1;
 	i = -1;
 	j = -1;
-	tmp = (char **)ft_calloc(envp_len(tmp_env) + count, sizeof(char *));
-	while (tmp_env[++i] && ft_strncmp("_=", tmp_env[i], 2) != 0)
-		if (!(tmp[i] = ft_strdup(tmp_env[i])))
+	tmp = (char **)ft_calloc(envp_len(g_env) + count, sizeof(char *));
+	while (g_env[++i] && ft_strncmp("_=", g_env[i], 2) != 0)
+		if (!(tmp[i] = ft_strdup(g_env[i])))
 			msh_exit();
-	rep_tmp_env2(str, tmp, i, j);
-	buffer = tmp_env;
-	tmp_env = tmp;
+	rep_g_env2(str, tmp, i, j);
+	buffer = g_env;
+	g_env = tmp;
 	free_array(buffer);
 }
 
@@ -136,7 +136,7 @@ void			com_export(char **arg)
 			errno = 1;
 		}
 		else if (ft_strchr(arg[i], '='))
-			rep_tmp_env(arg[i]);
+			rep_g_env(arg[i]);
 	}
 	return ;
 }
