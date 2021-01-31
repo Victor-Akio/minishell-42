@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:53:18 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 21:36:44 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 23:29:49 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void			count_redirections(char **arr, int *count)
 			(ptr[0][1] != '>') && (ptr[1] = ptr[0] + 1))
 			count[1]++;
 		ptr[1] = arr[i];
-		while ((ptr[0] = ft_strquots1(quotpos, ptr[1], '>')) &&
+		while ((ptr[0] = ft_strquots2(quotpos, ptr[1], '>')) &&
 			(ptr[1] = ptr[0] + 1))
 			count[2]++;
 		free(quotpos);
