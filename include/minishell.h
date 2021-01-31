@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 02:26:36 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 21:37:42 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void			count_redirections(char **arr, int *count);
 void			save_env(int ac, char **av, char **ep);
 char			**split_quots(char *str, char c);
 char			**rm_empty_str(char **arr);
-char			*ft_strquotsbase(char **quotpos, char *str, char c);
 char			*ft_strquots(char **quotpos, char *str, char c);
-char			*ft_strquot_aux(char **quotpos, char *str, char c);
+char			*ft_strquots1(char **quotpos, char *str, char c);
+char			*ft_strquots2(char **quotpos, char *str, char c);
 int				count_unquoted(char **quotpos, char *str, char c);
 int				between_quot_pair(char **quotpos, char *pos);
 void			rm_dummies(char **table);

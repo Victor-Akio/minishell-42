@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:38:07 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/12/03 21:38:51 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 03:14:26 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int				ft_all_spaces(char *str)
 
 	i = -1;
 	j = ft_strlen(str);
-	while ((++i < j) && (ft_isspace(str[i]) && str[i] != '\n'))
+	while ((++i < j) && (ft_isspace_nl(str[i]) && str[i] != '\n'))
 		;
 	if (i == j)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:01:31 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 02:21:25 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 21:01:55 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,6 @@ int				check_empty_com(char **table, char **input)
 			free_all((void **)table, ft_arraylen(table));
 			return (1);
 		}
-	}
-	return (0);
-}
-
-char			*ft_strquot_aux(char **quotpos, char *str, char c)
-{
-	int			i;
-	int			x;
-
-	x = ft_arraylen(quotpos);
-	i = -1;
-	while ((str[++i]) && (str[i + 1]))
-	{
-		if ((str[i] == c) && (str[i + 1] == c) &&
-			((between_quot_pair(quotpos, str + i) != -1)
-			|| ((x % 2) && (str + i > quotpos[x - 1]))))
-			continue ;
-		else if ((str[i] == c) && (str[i + 1] == c))
-			return (str + i + 1);
 	}
 	return (0);
 }

@@ -6,11 +6,17 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 09:24:42 by vminomiy          #+#    #+#             */
-/*   Updated: 2020/08/22 09:30:29 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 03:12:09 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int				ft_isspace_nl(int c)
+{
+	return ((c == '\t') || (c == '\v') || (c == '\f')
+		|| (c == '\r') || (c == ' '));
+}
 
 int				ft_isspace(int c)
 {

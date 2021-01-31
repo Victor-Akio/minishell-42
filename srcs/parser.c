@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 20:47:28 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 02:21:49 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 21:55:07 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,9 @@ int				set_redirection(t_commands *table, int *i)
 	while ((str = table->coms[i[0]][++(*(i + 1))]))
 	{
 		quotpos = set_pos(str);
-		ptr[0] = ft_strquotsbase(quotpos, str, '<');
-		ptr[1] = ft_strquots(quotpos, str, '>');
-		ptr[2] = ft_strquots(quotpos, str, '>');
+		ptr[0] = ft_strquots(quotpos, str, '<');
+		ptr[1] = ft_strquots1(quotpos, str, '>');
+		ptr[2] = ft_strquots2(quotpos, str, '>');
 		free(quotpos);
 		if ((ptr[0]) || (ptr[1]) || (ptr[2]))
 		{

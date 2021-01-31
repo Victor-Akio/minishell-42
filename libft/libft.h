@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 10:30:11 by hbuisser          #+#    #+#             */
-/*   Updated: 2021/01/14 18:49:11 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/01/31 03:13:08 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ char			*ft_addchar(char *str, char c);
 void			ft_addstr(char ***arr, char *str);
 int				ft_all_spaces(char *str);
 int				ft_findchar(char *str, char c);
+int				ft_isspace_nl(int c);
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
