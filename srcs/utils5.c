@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:57:53 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 21:53:58 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/01 01:32:02 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,6 @@ char			*ft_strquots(char **quotpos, char *str, char c)
 	return (0);
 }
 
-char			*ft_strquots2(char **quotpos, char *str, char c)
-{
-	int			i;
-	int			j;
-
-	j = ft_arraylen(quotpos);
-	i = -1;
-	while ((str[++i]) && (str[i + 1]))
-	{
-		if ((str[i] == c) && (str[i + 1] == c) &&
-			((between_quot_pair(quotpos, str + i) != -1)
-			|| ((j % 2) && (str + i > quotpos[j - 1]))))
-			continue ;
-		else if ((str[i] == c) && (str[i + 1] == c))
-			return (str + i + 1);
-	}
-	return (0);
-}
-
 char			*ft_strquots1(char **quotpos, char *str, char c)
 {
 	int		i;
@@ -98,6 +79,25 @@ char			*ft_strquots1(char **quotpos, char *str, char c)
 		else if ((i != 0) && (str[i] == c) && (str[i + 1] != c) &&
 			(str[i - 1] != c))
 			return (str + i);
+	}
+	return (0);
+}
+
+char			*ft_strquots2(char **quotpos, char *str, char c)
+{
+	int			i;
+	int			j;
+
+	j = ft_arraylen(quotpos);
+	i = -1;
+	while ((str[++i]) && (str[i + 1]))
+	{
+		if ((str[i] == c) && (str[i + 1] == c) &&
+			((between_quot_pair(quotpos, str + i) != -1)
+			|| ((j % 2) && (str + i > quotpos[j - 1]))))
+			continue ;
+		else if ((str[i] == c) && (str[i + 1] == c))
+			return (str + i + 1);
 	}
 	return (0);
 }

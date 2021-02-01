@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:54:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 21:34:48 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/01 01:01:08 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ int				tolken_gen(char **coms, t_commands *table, int size)
 				return (free_parser_error(table, i, coms));
 		}
 	}
-	ft_freearray(coms);
+	free_array(coms);
 	return (0);
 }

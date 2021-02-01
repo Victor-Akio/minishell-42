@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:58:41 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/01 00:21:24 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/01 02:33:11 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,18 @@ int			main(int ac, char **av, char **ep)
 		signal(SIGINT, sighandler);
 		show_prompt();
 		read_input(&input);
-		com = split_quots(input, ';');
-		if (check_empty_com(com, &input))
-			continue;
+		if (ft_strcmp(input, "") != 0)
+		{
+			com = split_quots(input, ';');
+			if (check_empty_com(com, &input))
+				continue;
+			com = rm_empty_str(com);
+			if (!(table = malloc(sizeof(t_commands) * ft_arraylen(com))))
+				return (EXIT_FAILURE);
+			if ((*com) && !(tolken_gen(com, table, ft_arraylen(com))))
+				execute_com(table, ft_arraylen(com));
+		}
 		free(input);
-		com = rm_empty_str(com);
-		if (!(table = malloc(sizeof(t_commands) * ft_arraylen(com))))
-			return (EXIT_FAILURE);
-		if ((!(tolken_gen(com, table, ft_arraylen(com)))) && !com)
-			execute_com(table, ft_arraylen(com));
 	}
 	return (0);
 }

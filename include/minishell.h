@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 21:37:42 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/01 02:17:36 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void			read_input(char **input);
 */
 int				tolken_gen(char **coms, t_commands *table, int size);
 void			init_redirection(t_commands *table, int *i, int *count);
+char			**initializer(char *input);
 /*
 ** Executor
 */

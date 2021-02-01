@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:01:31 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/01 00:20:06 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/01 02:20:00 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,14 @@ void			read_input(char **input)
 		free(*input);
 		msh_exit();
 	}
+}
+
+char			**initializer(char *input)
+{
+	char		**com;
+
+	show_prompt();
+	read_input(&input);
+	com = split_quots(input, ';');
+	return (com);
 }
