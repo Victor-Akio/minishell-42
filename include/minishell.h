@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/01 02:17:36 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/06 02:16:18 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char			**set_pos(char *str);
 void			export_no_arg(char **tmp);
 int				read_subshell(char **input, char c);
 char			*env_selector(char *ev);
-t_var			reset_count(void);
+void			reset_count(int *i, int *j);
 void			show_prompt(void);
 /*
 ** Free malloc

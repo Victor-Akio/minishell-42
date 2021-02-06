@@ -6,20 +6,16 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:06:43 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/25 19:59:09 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/06 02:15:52 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_var			reset_count(void)
+void			reset_count(int *i, int *j)
 {
-	t_var	var;
-
-	var.i = 0;
-	var.j = 0;
-	var.count = 0;
-	return (var);
+	*i = 0;
+	*j = 0;
 }
 
 void			init_redirection(t_commands *table, int *i, int *count)
