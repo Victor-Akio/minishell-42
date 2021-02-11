@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:30:27 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/01 02:27:26 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/09 00:11:50 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,11 @@ int				free_parser_error(t_commands *table, int index, char **coms)
 		j = -1;
 		while (++j < table[i].com_index)
 		{
-			ft_freearray(table[i].coms[j]);
-			ft_freearray(table[i].i_files[j]);
-			ft_freearray(table[i].o_files[j]);
-			ft_freearray(table[i].ap_files[j]);
-			ft_freearray(table[i].d_files[j]);
+			free_array(table[i].coms[j]);
+			free_array(table[i].i_files[j]);
+			free_array(table[i].o_files[j]);
+			free_array(table[i].ap_files[j]);
+			free_array(table[i].d_files[j]);
 		}
 		free_ptrs(table + i);
 	}

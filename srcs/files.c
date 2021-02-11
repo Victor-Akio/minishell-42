@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:07:48 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/20 17:33:28 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/11 22:37:23 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		dummy_update(t_commands *table, int *i, char *str, int idx)
 	}
 	idx == '0' ? table->o_files[i[0]][0] = ft_strdup(str) : 0;
 	idx == 'A' ? table->ap_files[i[0]][0] = ft_strdup(str) : 0;
-	ft_freearray(table->d_files[i[0]]);
+	free_array(table->d_files[i[0]]);
 	table->d_files[i[0]] = tmp;
 }
 

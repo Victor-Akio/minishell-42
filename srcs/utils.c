@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/17 02:42:15 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/30 04:45:10 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/08 00:12:07 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int		char_verify(char **quotpos, char c)
 		*quotpos[i + 1] = '\0';
 		ptr = ft_strchr(quotpos[i], c);
 		*quotpos[i + 1] = *quotpos[i];
-		if (ptr)
+		if ((ptr))
 			return (1);
 		else
 			i += 2;
@@ -38,7 +38,7 @@ int				between_quot_pair(char **quotpos, char *pos)
 	i = 0;
 	while ((quotpos[i]) && (quotpos[i + 1]))
 	{
-		if ((pos > quotpos[i]) && (quotpos[i + 1]))
+		if ((pos > quotpos[i]) && (pos < quotpos[i + 1]))
 			return (i);
 		else
 			i += 2;

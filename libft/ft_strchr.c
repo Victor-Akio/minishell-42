@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 16:55:01 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/01 01:48:11 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/08 23:14:16 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*ft_strchr(const char *s, int c)
 	int		i;
 
 	ptr = (char *)s;
-	if (!ptr)
+	if (!ptr || !*ptr)
 		return (0);
 	i = -1;
 	while (ptr[++i])

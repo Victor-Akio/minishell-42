@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:01:58 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/01 02:06:22 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/11 23:16:10 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void		redirect_output(t_commands *table, int *i, int *fd, int *pp)
 			O_APPEND, S_IWUSR | S_IRUSR);
 	else if ((i[1] == x) && (table->o_files[i[1]][0]))
 		fd[3] = open(table->o_files[i[1]][0], O_CREAT | O_WRONLY |
-			O_APPEND, S_IWUSR | S_IRUSR);
+			O_TRUNC, S_IWUSR | S_IRUSR);
 	else if (i[1] == x)
 	{
 		pipe(pp);

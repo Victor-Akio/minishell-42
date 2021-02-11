@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 19:57:53 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/01 01:32:02 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/08 18:56:39 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ char			*ft_strquots(char **quotpos, char *str, char c)
 	i = -1;
 	while (str[++i])
 	{
-		if ((between_quot_pair(quotpos, str + i) != -1) ||
-			((j % 2) && (str + i > quotpos[j - 1])))
+		if (str[i] == c &&
+			((between_quot_pair(quotpos, str + i) != -1) ||
+			((j % 2) && (str + i > quotpos[j - 1]))))
 			continue ;
 		else if (str[i] == c)
 			return (str + i);

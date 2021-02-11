@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 21:06:43 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/06 02:15:52 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/11 21:20:52 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void			init_redirection(t_commands *table, int *i, int *count)
 		table->o_files[i[0]][0] = NULL;
 	table->ap_files[i[0]] = malloc(sizeof(char *) * ((count[2] > 0) + 1));
 	table->ap_files[i[0]][(count[2] > 0)] = NULL;
-	if (count[0] > 0)
+	if (count[2] > 0)
 		table->ap_files[i[0]][0] = NULL;
 	table->d_files[i[0]] = malloc(sizeof(char *) * 1);
 	table->d_files[i[0]][(count[0] > 0)] = NULL;

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:54:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/01 01:01:08 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/08 18:57:21 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		pick_coms(t_commands *table, char *coms)
 	table->coms[table->com_index] = NULL;
 	i = -1;
 	tmp = coms;
-	while ((tmp = ft_strquots2(quotpos, coms, '|')))
+	while ((tmp = ft_strquots(quotpos, coms, '|')))
 	{
 		*tmp = '\0';
 		table->coms[++i] = rm_empty_str(split_quots(coms, ' '));

@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 20:47:28 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 21:55:07 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/11 22:50:23 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static void		symbol_found(t_commands *table, int *i, char **ptr)
 	char		*tmp;
 
 	p1 = find_non_zero_char(ptr);
-	tmp = dup_symbol(table->coms[i[0]][i[1]] + 1);
+	tmp = dup_symbol(table->coms[i[0]][i[1] + 1]);
 	x = ft_strlen(tmp);
 	redir_files_updt(table, i, tmp, (p1 == ptr[2]) * 'A' + (p1 == ptr[0]) * 'I'
-		+ (p1 == ptr[1]) * '0');
-	if (((size_t)x == ft_strlen(table->coms[i[0]][i[1]])) && (tmp))
+		+ (p1 == ptr[1]) * 'O');
+	if (((size_t)x == ft_strlen(table->coms[i[0]][i[1] + 1])) && (tmp))
 		resize_arr_pos(&table->coms[i[0]], i[1] + 1);
 	else if (tmp)
 	{

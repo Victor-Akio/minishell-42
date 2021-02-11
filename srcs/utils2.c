@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 19:53:18 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/01/31 23:29:49 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/11 22:07:03 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void			resize_arr_pos(char ***arr, int pos)
 	tmp[size - 1] = NULL;
 	i = -1;
 	j = -1;
-	while (*((arr) + ++i))
+	while (*((*arr) + ++i))
 	{
 		if (i == pos)
 			continue ;

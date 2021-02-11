@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:23:01 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/02/06 02:28:44 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/02/09 00:55:40 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ int				sys_path(char **arr)
 		{
 			free(*arr);
 			*arr = tmp;
-			ft_freearray(path);
+			free_array(path);
 			return (1);
 		}
 		free(tmp);
 	}
-	ft_freearray(path);
+	free_array(path);
 	return (0);
 }
 

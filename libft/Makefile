@@ -6,7 +6,7 @@
 #    By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/16 12:18:16 by hbuisser          #+#    #+#              #
-#    Updated: 2021/01/14 20:36:22 by vminomiy         ###   ########.fr        #
+#    Updated: 2021/02/08 20:59:41 by vminomiy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(NAME): $(OBJECTS)
 	ranlib $(NAME)
 
 $(OBJECTS): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
+	$(CC) -g $(CFLAGS) -c $(SRCS)
 
 clean:
 	$(REM) $(OBJECTS)
