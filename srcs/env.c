@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/20 04:47:55 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/03/20 23:56:14 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/03/22 05:02:52 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			com_env(char **arg)
 	}
 	while (g_env[++i])
 	{
-		ft_putstr_fd(g_env[i], 2);
+		ft_putstr_fd(g_env[i], 1);
 		ft_putchar(10);
 	}
 	g_status = 0;

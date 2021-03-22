@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 20:23:01 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/03/21 17:03:51 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/03/21 22:09:30 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,10 @@ int				exec_pathfinder(char **arr)
 	return (0);
 }
 
-int				launch_exec(char **arr, int *fd)
+int				launch_exec(char **arr)
 {
 	pid_t		pid;
 	int			status;
-	int			stdin;
 
 	status = g_status;
 	signal(SIGINT, sighandler_c);
@@ -107,12 +106,7 @@ int				launch_exec(char **arr, int *fd)
 		fork_error();
 	else if (pid == 0)
 	{
-		close(fd[1]);
-		close(STDIN_FILENO);
-		stdin = dup(fd[0]);
 		status = execve(arr[0], arr, g_env);
-		close(fd[0]);
-		close(stdin);
 	}
 	else
 		waitpid(pid, &status, 0);

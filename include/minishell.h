@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:49:11 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/03/21 17:00:57 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/03/22 15:54:42 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int				pick_com_exec(char **arr, t_commands *table);
 char			**save_syspath(void);
 int				sys_path(char **arr);
 int				exec_pathfinder(char **arr);
-int				launch_exec(char **arr, int *fd);
+int				launch_exec(char **arr);
 void			execute_com(t_commands *table, int index);
 /*
 ** Utilities
@@ -105,6 +105,7 @@ int				read_subshell(char **input, char c);
 char			*env_selector(char *ev);
 void			reset_count(int *i, int *j);
 void			show_prompt(void);
+void			path_updt(char *path);
 /*
 ** Free malloc
 */

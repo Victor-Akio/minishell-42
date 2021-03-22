@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 18:01:58 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/03/21 17:01:20 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/03/22 02:52:06 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void		redirect_input(t_commands *table, int *i, int *fd)
 		fd[2] = dup(fd[0]);
 	else if (i[1] == 0)
 		fd[2] = open(table->i_files[i[1]][0], O_RDONLY);
+	if (fd[2] < 0)
+		ft_putstr_fd("error: no such file or directory.", 1);
 	dup2(fd[2], 0);
 	close(fd[2]);
 }
@@ -44,7 +46,7 @@ static void		redirect_output(t_commands *table, int *i, int *fd, int *pp)
 	else if ((i[1] == x) && (table->o_files[i[1]][0]))
 		fd[3] = open(table->o_files[i[1]][0], O_CREAT | O_WRONLY |
 			O_TRUNC, 0664);
-	else if (i[1] == x)
+	else if (i[1] < x)
 	{
 		pipe(pp);
 		fd[3] = pp[1];
@@ -89,7 +91,7 @@ void			execute_com(t_commands *table, int index)
 			if (coms_handler(table[i[0]].coms[i[1]]))
 				g_status = pick_com_exec(table[i[0]].coms[i[1]], table + i[0]);
 			else if ((exec_pathfinder(table[i[0]].coms[i[1]])))
-				g_status = launch_exec(table[i[0]].coms[i[1]], fd);
+				g_status = launch_exec(table[i[0]].coms[i[1]]);
 			else if (table[i[0]].coms[i[1]][0] != NULL)
 				g_status = coms_not_found(table[i[0]].coms[i[1]][0]);
 		}

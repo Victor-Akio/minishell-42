@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 20:33:33 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/03/21 00:52:29 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/03/22 03:53:47 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,16 @@ void			replace_var(char **d, char *ptr)
 		*d = ft_itoa(g_status);
 		ptr[1] = '\0';
 	}
-	if ((tmp = non_zero_char(ft_strchr(*d, '"'), ft_strchr(*d, '\''))))
+	if ((tmp = non_zero_char(ft_strchr(*d, '\"'), ft_strchr(*d, '\''))))
 	{
 		if ((aux = ft_strchr(tmp + 1, *tmp)))
 		{
 			*aux = '\0';
-			str = (*tmp == '"') ? env_selector(ptr) : ft_strdup(ptr - 1);
+			str = (*tmp == '\"') ? env_selector(ptr) : ft_strdup(ptr - 1);
 			*aux = *tmp;
 		}
 		else
-			str = (*tmp == '"') ? env_selector(ptr) : ft_strdup(ptr - 1);
+			str = (*tmp == '\"') ? env_selector(ptr) : ft_strdup(ptr - 1);
 	}
 	else
 		str = env_selector(ptr);

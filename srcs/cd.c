@@ -6,7 +6,7 @@
 /*   By: vminomiy <vminomiy@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 18:30:26 by vminomiy          #+#    #+#             */
-/*   Updated: 2021/03/19 23:00:07 by vminomiy         ###   ########.fr       */
+/*   Updated: 2021/03/22 06:17:02 by vminomiy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int				com_cd(char **arg)
 	int		i;
 	char	*path;
 
+	path = NULL;
 	if (!quote_handler(arg, 1))
 		return (0);
 	if (!arg[1])
@@ -78,6 +79,7 @@ int				com_cd(char **arg)
 	i = chdir(arg[1]);
 	if (i != 0)
 		return (path_error(arg + 1));
+	path_updt(path);
 	g_status = 0;
 	return (0);
 }
