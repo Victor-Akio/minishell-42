@@ -20,4 +20,5 @@ There are a few considerations to be remebered:
 - [42 Docs - Minishell](https://harm-smits.github.io/42docs/projects/minishell);
 - [Making your own minishell](https://www.geeksforgeeks.org/making-linux-shell-c/);
 - [Bash - concepts](https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html);
-`Please, do remeber that the best source of information is the manual (man)`
+- [A reference](https://github.com/Elhuaco/minishell);
+- `Please, do remeber that the best source of information is the manual (man)`
